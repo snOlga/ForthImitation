@@ -1,0 +1,137 @@
+.
+reload tos1
+snap io output
+reload stack pointer1	--from here pop
+snap stack1
+snap tos1
+reload stack pointer1
+snap null
+snap alu
+dec
+snap stack pointer1
+
+key
+reload stack pointer1	--from here push
+snap null
+snap alu
+inc
+snap stack pointer1
+reload tos1
+snap stack1		--till here push
+snap io input
+snap tos1
+
+push (continue)
+reload memory
+snap tos1
+
+<+- and or
+reload tos1
+reload stack1
+snap alu
+FORM OPERATION HERE
+snap flags
+snap tos1
+reload stack pointer1
+snap null
+snap alu
+dec
+snap stack pointer1
+
+if
+snap null
+reload stack pointer1
+snap alu
+do or
+snap flags
+
+else
+-
+then
+-
+
+do
+reload stack pointer2
+snap null
+snap alu
+inc
+snap stack pointer2
+reload stack1
+snap stack2
+reload tos1
+snap tos2
+2 TIMES POP
+reload tos2
+reload stack pointer2	--continue of "loop"
+snap stack2
+do <
+snap flags
+
+loop
+reload tos2
+snap null
+snap alu
+inc
+snap tos2
+
+variable		--returns free memory address
+PUSH
+
+!
+reload stack pointer1
+snap stack1
+snap tos1
+snap memory
+
+swap
+reload stack pointer2
+snap null
+inc
+snap stack pointer2
+reload tos2
+snap stack2
+reload tos1
+snap tos2
+reload stack pointer2
+snap null
+inc
+snap stack pointer2
+reload tos2
+snap stack2
+reload stack pointer2
+snap null
+inc
+snap stack pointer2
+reload stack1
+snap stack2
+snap tos2
+snap tos1
+reload stack pointer2
+snap null
+dec
+snap stack pointer2
+snap stack2
+snap stack1
+reload stack pointer2
+snap null
+dec
+snap stack pointer2
+snap stack2
+snap tos2
+reload stack pointer2
+snap null
+dec
+snap stack pointer2
+snap stack2
+
+?
+reload stack pointer1
+snap null
+snap alu
+inc
+snap stack pointer1
+reload tos1
+snap stack1
+snap memory
+snap tos1
+
