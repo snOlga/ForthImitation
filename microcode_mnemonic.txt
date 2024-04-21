@@ -1,7 +1,6 @@
-.
-reload tos1
+reload tos1             -- .
 snap io output
-reload stack pointer1	--from here pop
+reload stack pointer1	--from here drop
 snap stack1
 snap tos1
 reload stack pointer1
@@ -10,8 +9,7 @@ snap alu
 dec
 snap stack pointer1
 
-key
-reload stack pointer1	--from here push
+reload stack pointer1   --key	--from here push
 snap null
 snap alu
 inc
@@ -21,12 +19,10 @@ snap stack1		--till here push
 snap io input
 snap tos1
 
-push (continue)
-reload memory
+reload memory -- push (continue)
 snap tos1
 
-<+- and or
-reload tos1
+reload tos1 -- <+- and or
 reload stack1
 snap alu
 FORM OPERATION HERE
@@ -38,8 +34,7 @@ snap alu
 dec
 snap stack pointer1
 
-if
-snap null
+snap null --if
 reload stack pointer1
 snap alu
 do or
@@ -50,8 +45,7 @@ else
 then
 -
 
-do
-reload stack pointer2
+reload stack pointer2 --do
 snap null
 snap alu
 inc
@@ -67,8 +61,7 @@ snap stack2
 do <
 snap flags
 
-loop
-reload tos2
+reload tos2 --loop
 snap null
 snap alu
 inc
@@ -77,14 +70,12 @@ snap tos2
 variable		--returns free memory address
 PUSH
 
-!
-reload stack pointer1
+reload stack pointer1 --!
 snap stack1
 snap tos1
 snap memory
 
-swap
-reload stack pointer2
+reload stack pointer2 --swap
 snap null
 inc
 snap stack pointer2
@@ -124,8 +115,7 @@ dec
 snap stack pointer2
 snap stack2
 
-?
-reload stack pointer1
+reload stack pointer1 -- ?
 snap null
 snap alu
 inc
