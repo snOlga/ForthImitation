@@ -35,7 +35,7 @@ dec
 snap stack pointer1
 
 snap null --if
-reload stack pointer1
+reload tos1
 snap alu
 do or
 snap flags

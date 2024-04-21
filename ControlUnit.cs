@@ -27,7 +27,6 @@ public class ControlUnit
 
             if (name.All(char.IsDigit))
             {
-                dataToMemory = name;
                 isNeedToLoad = true;
             }
             if (name.StartsWith('"'))
@@ -122,6 +121,8 @@ public class ControlUnit
         decoder = new Decoder(fileNameCM);
     }
 
+    private (bool neg, bool zero, bool less) flags = (false, false, false);
+
     public void Work()
     {
         int currentPointer = startProgrammIndex;
@@ -135,6 +136,26 @@ public class ControlUnit
             }
 
             ExecuteMicroProgramm(decodeResult.microCode);
+
+
+            //jumping here
+            if (mainMemory.GetData(currentPointer) == "else")
+            {
+                while (mainMemory.GetData(currentPointer) != "then")
+                {
+                    currentPointer++;
+                }
+            }
+            if (mainMemory.GetData(currentPointer) == "if")
+            {
+                if (flags.zero)
+                {
+                    while (mainMemory.GetData(currentPointer) != "else")
+                    {
+                        currentPointer++;
+                    }
+                }
+            }
             currentPointer++;
         }
 
@@ -249,15 +270,18 @@ public class ControlUnit
         }
         else if (controlCommad[6] == '1')
         {
-            //TODO: IO
+            if (controlCommad[9] == '1')
+                dataPath.SnapIO("in");
+            if (controlCommad[10] == '1')
+                dataPath.SnapIO("out");
         }
         else if (controlCommad[7] == '1')
         {
             //nothing here :(
         }
-        else if (controlCommad[8] == '1')
+        else if (controlCommad[8] == '1') //flags
         {
-            //TODO: FLAGS
+            flags = dataPath.SnapFlags();
         }
         else
         {

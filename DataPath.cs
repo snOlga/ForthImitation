@@ -9,6 +9,7 @@ public class DataPath
     private string bufferTOS = "0";
     private (int leftData, int rightData) alu = (0, 0);
     private string IOData = "0";
+    private (bool neg, bool zero, bool less) flags = (false, false, false);
 
     public DataPath(Memory memory)
     {
@@ -23,6 +24,7 @@ public class DataPath
     private string bufTOSBeforeSnap = "0";
     private (int leftData, int rightData) aluBeforeSnap = (0, 0);
     private string IODataBeforeSnap = "0";
+    private (bool neg, bool zero, bool less) flagsBeforeSnap = (false, false, false);
 
     #region snaps
     public void SnapMainPointer()
@@ -77,6 +79,26 @@ public class DataPath
         aluBeforeSnap.leftData = 0;
     }
 
+    public void SnapIO(string code)
+    {
+        IOData = IODataBeforeSnap;
+        if (code == "in")
+        {
+
+        }
+        else if (code == "out")
+        {
+            Console.WriteLine(IOData);
+        }
+        IOData = IODataBeforeSnap;
+    }
+
+    public (bool neg, bool zero, bool less) SnapFlags()
+    {
+        flags = flagsBeforeSnap;
+        return flags;
+    }
+
     #endregion snaps
 
     public void DoOperation(string type)
@@ -86,24 +108,31 @@ public class DataPath
         {
             case "+":
                 result = alu.leftData + alu.rightData;
+                flagsBeforeSnap = (result < 0, result == 0, flagsBeforeSnap.less);
                 break;
             case "-":
-                result = alu.leftData + alu.rightData;
+                result = alu.leftData - alu.rightData;
+                flagsBeforeSnap = (result < 0, result == 0, flagsBeforeSnap.less);
                 break;
             case "<":
                 result = alu.leftData < alu.rightData ? 1 : 0;
+                flagsBeforeSnap = (flagsBeforeSnap.neg, flagsBeforeSnap.zero, result == 1);
                 break;
             case "and":
                 result = alu.leftData & alu.rightData;
+                flagsBeforeSnap = (flagsBeforeSnap.neg, result == 0, flagsBeforeSnap.less);
                 break;
             case "or":
                 result = alu.leftData | alu.rightData;
+                flagsBeforeSnap = (flagsBeforeSnap.neg, result == 0, flagsBeforeSnap.less);
                 break;
             case "inc":
                 result = alu.rightData + 1;
+                flagsBeforeSnap = (result < 0, result == 0, flagsBeforeSnap.less);
                 break;
             case "dec":
                 result = alu.rightData - 1;
+                flagsBeforeSnap = (result < 0, result == 0, flagsBeforeSnap.less);
                 break;
         }
 
@@ -155,8 +184,6 @@ public class DataPath
     }
 
     #endregion reloads
-
-
 }
 
 public class Memory
@@ -173,7 +200,7 @@ public class Memory
     }
     public void LoadToMemory(string data)
     {
-        mainMemory[currentPointer] =  data;
+        mainMemory[currentPointer] = data;
     }
 
     public string GetData(int pointer)
