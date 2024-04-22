@@ -1,7 +1,5 @@
 9
-0
-do
-1
+8
+swap
 .
-loop
-then
+.

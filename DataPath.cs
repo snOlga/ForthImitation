@@ -64,6 +64,7 @@ public class DataPath
     {
         bufferTOS = bufTOSBeforeSnap;
         bufStackBeforeSnap = bufTOSBeforeSnap;
+        mainTOSBeforeSnap = bufTOSBeforeSnap;
         aluBeforeSnap.rightData = int.Parse(bufTOSBeforeSnap);
     }
     public void SnapMemory()
@@ -165,7 +166,8 @@ public class DataPath
     public void ReloadBufferStack()
     {
         bufTOSBeforeSnap = bufferStack[bufferStackPointer];
-        aluBeforeSnap.leftData = int.Parse(bufTOSBeforeSnap);
+        aluBeforeSnap.leftData = int.Parse(bufferStack[bufferStackPointer]);
+        stackBeforeSnap = bufferStack[bufferStackPointer];
     }
     public void ReloadMainTOS()
     {
