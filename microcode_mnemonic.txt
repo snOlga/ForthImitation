@@ -55,9 +55,10 @@ snap stack2
 reload tos1
 snap tos2
 2 TIMES POP
-reload tos2
 reload stack pointer2	--continue of "loop"
-snap stack2
+reload stack2
+reload tos2
+snap alu
 do <
 snap flags
 

@@ -49,6 +49,7 @@ public class DataPath
     {
         bufferStack[bufferStackPointer] = bufStackBeforeSnap;
         bufTOSBeforeSnap = bufStackBeforeSnap;
+        aluBeforeSnap.leftData = int.Parse(bufStackBeforeSnap);
     }
     public void SnapMainTOS()
     {
@@ -115,7 +116,7 @@ public class DataPath
                 flagsBeforeSnap = (result < 0, result == 0, flagsBeforeSnap.less);
                 break;
             case "<":
-                result = alu.leftData < alu.rightData ? 1 : 0;
+                result = alu.rightData < alu.leftData ? 1 : 0;
                 flagsBeforeSnap = (flagsBeforeSnap.neg, flagsBeforeSnap.zero, result == 1);
                 break;
             case "and":
@@ -164,6 +165,7 @@ public class DataPath
     public void ReloadBufferStack()
     {
         bufTOSBeforeSnap = bufferStack[bufferStackPointer];
+        aluBeforeSnap.leftData = int.Parse(bufTOSBeforeSnap);
     }
     public void ReloadMainTOS()
     {

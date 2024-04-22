@@ -85,11 +85,11 @@ public class ControlUnit
                     microProgramm.AddRange(microcommands[46..55]);
                     microProgramm.AddRange(microcommands[2..10]);
                     microProgramm.AddRange(microcommands[2..10]);
-                    microProgramm.AddRange(microcommands[56..61]);
+                    microProgramm.AddRange(microcommands[56..63]);
                     break;
                 case "loop":
-                    microProgramm.AddRange(microcommands[62..65]);
-                    microProgramm.AddRange(microcommands[57..61]);
+                    microProgramm.AddRange(microcommands[64..69]);
+                    microProgramm.AddRange(microcommands[56..63]);
                     break;
                 case "!":
                     microProgramm.AddRange(microcommands[68..73]);
@@ -153,6 +153,16 @@ public class ControlUnit
                     while (mainMemory.GetData(currentPointer) != "else")
                     {
                         currentPointer++;
+                    }
+                }
+            }
+            if(mainMemory.GetData(currentPointer) == "loop")
+            {
+                if(flags.less)
+                {
+                    while (mainMemory.GetData(currentPointer) != "do")
+                    {
+                        currentPointer--;
                     }
                 }
             }
