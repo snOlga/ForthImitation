@@ -1,6 +1,8 @@
 public class DataPath
 {
+    StreamReader streamReader;
     private Memory mainMemory;
+    #region real_registers
     private string[] mainStack = new string[500];
     private int mainStackPointer = 0;
     private string mainTOS = "0";
@@ -10,13 +12,10 @@ public class DataPath
     private (int leftData, int rightData) alu = (0, 0);
     private string IOData = "0";
     private (bool neg, bool zero, bool less) flags = (false, false, false);
+    #endregion real_registers
 
-    public DataPath(Memory memory)
-    {
-        this.mainMemory = memory;
-    }
-
-    private string stackBeforeSnap = "0";
+    #region registers_before_snap
+    private string mainStackBeforeSnap = "0";
     private int mainPointerBeforeSnap = 0;
     private string mainTOSBeforeSnap = "0";
     private string bufStackBeforeSnap = "0";
@@ -25,7 +24,12 @@ public class DataPath
     private (int leftData, int rightData) aluBeforeSnap = (0, 0);
     private string IODataBeforeSnap = "0";
     private (bool neg, bool zero, bool less) flagsBeforeSnap = (false, false, false);
-
+    #endregion  registers_before_snap
+    public DataPath(Memory memory)
+    {
+        this.mainMemory = memory;
+        streamReader = new StreamReader("D:\\ITMO\\2_year\\csa\\ForthImitation\\input.txt");
+    }
     #region snaps
     public void SnapMainPointer()
     {
@@ -39,33 +43,39 @@ public class DataPath
     }
     public void SnapMainStack()
     {
-        mainStack[mainStackPointer] = stackBeforeSnap;
-        mainTOSBeforeSnap = stackBeforeSnap;
-        bufStackBeforeSnap = stackBeforeSnap;
-        aluBeforeSnap.rightData = int.Parse(stackBeforeSnap);
-        mainMemory.BufferData = stackBeforeSnap;
+        mainStack[mainStackPointer] = mainStackBeforeSnap;
+        mainTOSBeforeSnap = mainStackBeforeSnap;
+        bufStackBeforeSnap = mainStackBeforeSnap;
+        mainMemory.BufferData = mainStackBeforeSnap;
+        if (mainStackBeforeSnap.All(Char.IsDigit))
+            aluBeforeSnap.rightData = int.Parse(mainStackBeforeSnap);
     }
     public void SnapBufferStack()
     {
         bufferStack[bufferStackPointer] = bufStackBeforeSnap;
         bufTOSBeforeSnap = bufStackBeforeSnap;
-        aluBeforeSnap.leftData = int.Parse(bufStackBeforeSnap);
+        if (bufStackBeforeSnap.All(Char.IsDigit))
+            aluBeforeSnap.leftData = int.Parse(bufStackBeforeSnap);
     }
     public void SnapMainTOS()
     {
         mainTOS = mainTOSBeforeSnap;
         IODataBeforeSnap = mainTOSBeforeSnap;
-        stackBeforeSnap = mainTOSBeforeSnap;
+        mainStackBeforeSnap = mainTOSBeforeSnap;
         bufTOSBeforeSnap = mainTOSBeforeSnap;
-        aluBeforeSnap.rightData = int.Parse(mainTOSBeforeSnap);
-        mainMemory.BufferPointer = int.Parse(mainTOSBeforeSnap);
+        if (mainTOSBeforeSnap.All(Char.IsDigit))
+        {
+            aluBeforeSnap.rightData = int.Parse(mainTOSBeforeSnap);
+            mainMemory.BufferPointer = int.Parse(mainTOSBeforeSnap);
+        }
     }
     public void SnapBufferTOS()
     {
         bufferTOS = bufTOSBeforeSnap;
         bufStackBeforeSnap = bufTOSBeforeSnap;
         mainTOSBeforeSnap = bufTOSBeforeSnap;
-        aluBeforeSnap.rightData = int.Parse(bufTOSBeforeSnap);
+        if (bufTOSBeforeSnap.All(Char.IsDigit))
+            aluBeforeSnap.rightData = int.Parse(bufTOSBeforeSnap);
     }
     public void SnapMemory()
     {
@@ -80,21 +90,21 @@ public class DataPath
     {
         aluBeforeSnap.leftData = 0;
     }
-
     public void SnapIO(string code)
     {
         IOData = IODataBeforeSnap;
         if (code == "in")
         {
-
+            char input = (char)streamReader.Read();
+            IODataBeforeSnap = "" + input;
         }
         else if (code == "out")
         {
             Console.WriteLine(IOData);
         }
         IOData = IODataBeforeSnap;
+        mainTOSBeforeSnap = IOData;
     }
-
     public (bool neg, bool zero, bool less) SnapFlags()
     {
         flags = flagsBeforeSnap;
@@ -103,6 +113,57 @@ public class DataPath
 
     #endregion snaps
 
+    #region reloads
+    public void ReloadMainPointer()
+    {
+        aluBeforeSnap.rightData = mainStackPointer;
+    }
+    public void ReloadBufferPointer()
+    {
+        aluBeforeSnap.rightData = bufferStackPointer;
+    }
+    public void ReloadMainStack()
+    {
+        mainTOSBeforeSnap = mainStack[mainStackPointer];
+        bufStackBeforeSnap = mainStack[mainStackPointer];
+        mainMemory.BufferData = mainStack[mainStackPointer];
+        if (mainStack[mainStackPointer].All(Char.IsDigit))
+            aluBeforeSnap.leftData = int.Parse(mainStack[mainStackPointer]);
+    }
+    public void ReloadBufferStack()
+    {
+        bufTOSBeforeSnap = bufferStack[bufferStackPointer];
+        mainStackBeforeSnap = bufferStack[bufferStackPointer];
+        if (bufferStack[bufferStackPointer].All(Char.IsDigit))
+            aluBeforeSnap.leftData = int.Parse(bufferStack[bufferStackPointer]);
+    }
+    public void ReloadMainTOS()
+    {
+        IODataBeforeSnap = mainTOS;
+        mainStackBeforeSnap = mainTOS;
+        bufTOSBeforeSnap = mainTOS;
+        if (mainTOS.All(Char.IsDigit))
+        {
+            aluBeforeSnap.rightData = int.Parse(mainTOS);
+            mainMemory.BufferPointer = int.Parse(mainTOS);
+        }
+    }
+    public void ReloadBufferTOS()
+    {
+        bufStackBeforeSnap = bufferTOS;
+        if (bufferTOS.All(Char.IsDigit))
+            aluBeforeSnap.rightData = int.Parse(bufferTOS);
+    }
+    public void ReloadMemory()
+    {
+        mainTOSBeforeSnap = mainMemory.Data;
+    }
+    #endregion reloads
+
+    public Memory MainMemory
+    {
+        get { return mainMemory; }
+    }
     public void DoOperation(string type)
     {
         int result = 0;
@@ -138,103 +199,12 @@ public class DataPath
                 break;
         }
 
-        stackBeforeSnap = "" + result;
+        mainStackBeforeSnap = "" + result;
         mainPointerBeforeSnap = result;
         mainTOSBeforeSnap = "" + result;
         bufStackBeforeSnap = "" + result;
         bufPointerBeforeSnap = result;
         bufTOSBeforeSnap = "" + result;
         IODataBeforeSnap = "" + result;
-    }
-
-    #region reloads
-    public void ReloadMainPointer()
-    {
-        aluBeforeSnap.rightData = mainStackPointer;
-    }
-    public void ReloadBufferPointer()
-    {
-        aluBeforeSnap.rightData = bufferStackPointer;
-    }
-    public void ReloadMainStack()
-    {
-        mainTOSBeforeSnap = mainStack[mainStackPointer];
-        bufStackBeforeSnap = mainStack[mainStackPointer];
-        aluBeforeSnap.leftData = int.Parse(mainStack[mainStackPointer]);
-        mainMemory.BufferData = mainStack[mainStackPointer];
-    }
-    public void ReloadBufferStack()
-    {
-        bufTOSBeforeSnap = bufferStack[bufferStackPointer];
-        aluBeforeSnap.leftData = int.Parse(bufferStack[bufferStackPointer]);
-        stackBeforeSnap = bufferStack[bufferStackPointer];
-    }
-    public void ReloadMainTOS()
-    {
-        IODataBeforeSnap = mainTOS;
-        stackBeforeSnap = mainTOS;
-        bufTOSBeforeSnap = mainTOS;
-        aluBeforeSnap.rightData = int.Parse(mainTOS);
-        mainMemory.BufferPointer = int.Parse(mainTOS);
-    }
-    public void ReloadBufferTOS()
-    {
-        bufStackBeforeSnap = bufferTOS;
-        aluBeforeSnap.rightData = int.Parse(bufferTOS);
-    }
-    public void ReloadMemory()
-    {
-        mainTOSBeforeSnap = mainMemory.Data;
-    }
-
-    #endregion reloads
-}
-
-public class Memory
-{
-    private string[] mainMemory = new string[10000];
-    private string dataBeforeSnap = "";
-    private int pointerBeforeSnap = 0;
-
-    private int currentPointer = 0;
-    public void LoadToMemory(string data, int pointer)
-    {
-        mainMemory[pointer] = data;
-        currentPointer = pointer;
-    }
-    public void LoadToMemory(string data)
-    {
-        mainMemory[currentPointer] = data;
-    }
-
-    public string GetData(int pointer)
-    {
-        currentPointer = pointer;
-        return mainMemory[pointer];
-    }
-
-    public int Pointer
-    {
-        get { return currentPointer; }
-        set { currentPointer = value; }
-    }
-
-    public string BufferData
-    {
-        set { dataBeforeSnap = value; }
-    }
-
-    public string Data
-    {
-        get { return mainMemory[currentPointer]; }
-    }
-    public int BufferPointer
-    {
-        set { pointerBeforeSnap = value; }
-    }
-
-    public void Snap()
-    {
-        mainMemory[currentPointer] = dataBeforeSnap;
     }
 }

@@ -13,12 +13,10 @@ public class ControlUnit
         {
             microcommands = File.ReadAllLines(fileName);
         }
-
         public string DataToMemory
         {
             get { return dataToMemory; }
         }
-
         public (bool willLoad, string[] microCode) DecodeInstruction(string name)
         {
             List<string> microProgramm = new List<string>();
@@ -49,6 +47,9 @@ public class ControlUnit
             {
                 case ".":
                     microProgramm.AddRange(microcommands[0..10]);
+                    break;
+                case "key":
+                    microProgramm.AddRange(microcommands[11..20]);
                     break;
                 case "drop":
                     microProgramm.AddRange(microcommands[2..10]);
@@ -105,11 +106,10 @@ public class ControlUnit
             return (isNeedToLoad, microProgramm.ToArray());
         }
     }
-
-    public ControlUnit(string fileNameMainProg, string fileNameCM, Memory actualMemory, DataPath actualDataPath)
+    public ControlUnit(string fileNameMainProg, string fileNameCM, DataPath actualDataPath)
     {
-        mainMemory = actualMemory;
         dataPath = actualDataPath;
+        mainMemory = dataPath.MainMemory;
 
         string[] forthProgramm = File.ReadAllLines(fileNameMainProg);
 
@@ -120,9 +120,7 @@ public class ControlUnit
         mainMemory.LoadToMemory(" ", forthProgramm.Length); //null pointer
         decoder = new Decoder(fileNameCM);
     }
-
     private (bool neg, bool zero, bool less) flags = (false, false, false);
-
     public void Work()
     {
         int currentPointer = startProgrammIndex;
@@ -168,10 +166,7 @@ public class ControlUnit
             }
             currentPointer++;
         }
-
     }
-
-
     private void LoadConsts(string constant, int pointer)
     {
         // if (constant.All(Char.IsDigit))
@@ -197,7 +192,6 @@ public class ControlUnit
         //     mainMemory.Pointer = 1000;
         // }
     }
-
     private void ExecuteMicroProgramm(string[] microProg)
     {
         foreach (var instruction in microProg)
@@ -278,7 +272,7 @@ public class ControlUnit
         {
             dataPath.SnapAlu();
         }
-        else if (controlCommad[6] == '1')
+        else if (controlCommad[6] == '1') //io
         {
             if (controlCommad[9] == '1')
                 dataPath.SnapIO("in");
@@ -298,7 +292,6 @@ public class ControlUnit
             dataPath.SnapNull();
         }
     }
-
     private void ExecuteOperativeCommand(char[] operativeCommad)
     {
         if (operativeCommad[1] == '1')
@@ -330,5 +323,4 @@ public class ControlUnit
             dataPath.DoOperation("dec");
         }
     }
-
 }
