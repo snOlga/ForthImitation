@@ -3,8 +3,11 @@ public class ControlUnit
     Memory mainMemory;
     DataPath dataPath;
     private const int startProgrammIndex = 0;
-    private const int indexForConst = 300;
+    private const int indexForConst = 50;
     private Decoder decoder;
+    private (bool neg, bool zero, bool less) flags = (false, false, false);
+    private int howManyPushConst = 0;
+    private bool isPushedFromMemory = false;
     private class Decoder
     {
         private string[] microcommands;
@@ -29,7 +32,7 @@ public class ControlUnit
             }
             if (name.StartsWith('"'))
             {
-                dataToMemory = name.Substring(1, name.Length - 1);
+                dataToMemory = name.Substring(1, name.Length - 2);
                 isNeedToLoad = true;
             }
             if (name == "variable")
@@ -120,7 +123,6 @@ public class ControlUnit
         mainMemory.LoadToMemory(" ", forthProgramm.Length); //null pointer
         decoder = new Decoder(fileNameCM);
     }
-    private (bool neg, bool zero, bool less) flags = (false, false, false);
     public void Work()
     {
         int currentPointer = startProgrammIndex;
@@ -169,31 +171,43 @@ public class ControlUnit
     }
     private void LoadConsts(string constant, int pointer)
     {
-        // if (constant.All(Char.IsDigit))
-        // {
-        //     mainMemory.LoadToMemory(constant, indexForConst);
-        //     mainMemory.Pointer = indexForConst;
-        // }
-        // if (constant == "addr1000") //TODO: hard code here
-        // {
-        //     mainMemory.LoadToMemory("1000", indexForConst);
-        //     mainMemory.Pointer = indexForConst;
-        // }
-        // else
-        // {
-        //     char[] stringData = constant.ToCharArray();
-        //     mainMemory.LoadToMemory(stringData.Length + "", indexForConst);
-        //     int currentIndex = indexForConst + 1;
-        //     for (int i = 0; i < stringData.Length; i++)
-        //     {
-        //         mainMemory.LoadToMemory(stringData[i] + "", currentIndex);
-        //         currentIndex++;
-        //     }
-        //     mainMemory.Pointer = 1000;
-        // }
+        if (constant.All(Char.IsDigit))
+        {
+            //nothing
+        }
+        else if (constant == "addr1000") //TODO: hard code here
+        {
+            mainMemory.LoadToMemory("1000", indexForConst);
+            //mainMemory.Pointer = indexForConst;
+        }
+        else
+        {
+            int rememberPointer = mainMemory.Pointer;
+            char[] stringData = constant.ToCharArray();
+            mainMemory.LoadToMemory(stringData.Length + "", indexForConst);
+            int currentIndex = indexForConst + 1;
+            for (int i = 0; i < stringData.Length; i++)
+            {
+                mainMemory.LoadToMemory(stringData[i] + "", currentIndex);
+                currentIndex++;
+            }
+            howManyPushConst = stringData.Length;
+            mainMemory.Pointer = rememberPointer;
+            isPushedFromMemory = true;
+            //mainMemory.Pointer = indexForConst;
+        }
     }
+    private int bufferOffset = 1;
     private void ExecuteMicroProgramm(string[] microProg)
     {
+        int rememberPointer = mainMemory.Pointer;
+        if(isPushedFromMemory)
+        {
+            mainMemory.Pointer = indexForConst + bufferOffset;
+            howManyPushConst--;
+            bufferOffset++;
+            isPushedFromMemory = howManyPushConst != 0;
+        }
         foreach (var instruction in microProg)
         {
             char[] bytes = instruction.ToCharArray();
@@ -207,6 +221,8 @@ public class ControlUnit
                 ExecuteOperativeCommand(bytes);
             }
         }
+        if(isPushedFromMemory)
+            ExecuteMicroProgramm(microProg);
     }
     private void ExecuteControlCommand(char[] controlCommad)
     {
