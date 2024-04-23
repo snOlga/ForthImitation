@@ -1,6 +1,7 @@
 public class DataPath
 {
     StreamReader streamReader;
+    StreamWriter streamWriter;
     private Memory mainMemory;
     #region real_registers
     private string[] mainStack = new string[500];
@@ -25,10 +26,16 @@ public class DataPath
     private string IODataBeforeSnap = "0";
     private (bool neg, bool zero, bool less) flagsBeforeSnap = (false, false, false);
     #endregion  registers_before_snap
-    public DataPath(Memory memory)
+    public DataPath(Memory memory, string inputArg)
     {
         this.mainMemory = memory;
-        streamReader = new StreamReader("D:\\ITMO\\2_year\\csa\\ForthImitation\\input.txt");
+        streamReader = new StreamReader(inputArg);
+        streamWriter = new StreamWriter("D:\\ITMO\\2_year\\csa\\ForthImitation\\output.txt");
+        streamWriter.AutoFlush = true;
+    }
+    public StreamWriter OutputFile
+    {
+        get { return streamWriter; }
     }
     #region snaps
     public void SnapMainPointer()
@@ -100,7 +107,7 @@ public class DataPath
         }
         else if (code == "out")
         {
-            Console.WriteLine(IOData);
+            streamWriter.Write(IOData);
         }
         IOData = IODataBeforeSnap;
         mainTOSBeforeSnap = IOData;
