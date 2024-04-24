@@ -37,6 +37,7 @@ public class Memory
     }
     public void Snap()
     {
-        mainMemory[pointer] = dataBeforeSnap;
+        mainMemory[pointerBeforeSnap] = dataBeforeSnap;
+        pointer = pointerBeforeSnap;
     }
 }

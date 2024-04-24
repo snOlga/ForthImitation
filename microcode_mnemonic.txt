@@ -72,8 +72,8 @@ variable		--returns free memory address
 PUSH
 
 reload stack pointer1 --!
-snap stack1
-snap tos1
+reload stack1
+reload tos1
 snap memory
 
 reload stack pointer2 --swap

@@ -4,6 +4,8 @@ public class ControlUnit
     DataPath dataPath;
     private const int startProgrammIndex = 0;
     private const int indexForConst = 50;
+    private int indexForVariable = 100;
+    private LoadTypes loadType;
     private Decoder decoder;
     private (bool neg, bool zero, bool less) flags = (false, false, false);
     private int howManyPushConst = 0;
@@ -20,27 +22,26 @@ public class ControlUnit
         {
             get { return dataToMemory; }
         }
-        public (bool willLoad, string[] microCode) DecodeInstruction(string name)
+        public (string[] microCode, LoadTypes loadType) DecodeInstruction(string name)
         {
+            LoadTypes loadType = LoadTypes.Nothing;
             List<string> microProgramm = new List<string>();
             dataToMemory = "";
-            bool isNeedToLoad = false;
 
             if (name.All(char.IsDigit))
             {
-                isNeedToLoad = true;
+                loadType = LoadTypes.NumericData;
             }
             if (name.StartsWith('"'))
             {
+                loadType = LoadTypes.StringData;
                 dataToMemory = name.Substring(1, name.Length - 2);
-                isNeedToLoad = true;
             }
             if (name == "variable")
             {
-                dataToMemory = "addr1000"; //TODO: clean of hard code
-                isNeedToLoad = true;
+                loadType = LoadTypes.Variable;
             }
-            if (isNeedToLoad)
+            if (loadType != LoadTypes.Nothing)
             {
                 microProgramm.AddRange(microcommands[11..18]);
                 microProgramm.AddRange(microcommands[21..23]);
@@ -95,18 +96,18 @@ public class ControlUnit
                     microProgramm.AddRange(microcommands[64..69]);
                     microProgramm.AddRange(microcommands[56..63]);
                     break;
-                case "!":
-                    microProgramm.AddRange(microcommands[70..74]);
-                    break;
                 case "swap":
                     microProgramm.AddRange(microcommands[75..117]);
+                    break;
+                case "!":
+                    microProgramm.AddRange(microcommands[70..74]);
                     break;
                 case "?":
                     microProgramm.AddRange(microcommands[118..127]);
                     break;
             }
 
-            return (isNeedToLoad, microProgramm.ToArray());
+            return (microProgramm.ToArray(), loadType);
         }
     }
     public ControlUnit(string fileNameMainProg, string fileNameCM, DataPath actualDataPath)
@@ -128,11 +129,11 @@ public class ControlUnit
         int currentPointer = startProgrammIndex;
         while (mainMemory.GetData(currentPointer) != " ")
         {
-            (bool willLoad, string[] microCode) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
+            (string[] microCode, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
 
-            if (decodeResult.willLoad)
+            if (decodeResult.loadType != LoadTypes.Nothing)
             {
-                LoadConsts(decoder.DataToMemory, mainMemory.Pointer);
+                LoadConsts(decoder.DataToMemory, decodeResult.loadType);
             }
 
             ExecuteMicroProgramm(decodeResult.microCode);
@@ -156,9 +157,9 @@ public class ControlUnit
                     }
                 }
             }
-            if(mainMemory.GetData(currentPointer) == "loop")
+            if (mainMemory.GetData(currentPointer) == "loop")
             {
-                if(flags.less)
+                if (flags.less)
                 {
                     while (mainMemory.GetData(currentPointer) != "do")
                     {
@@ -169,18 +170,21 @@ public class ControlUnit
             currentPointer++;
         }
     }
-    private void LoadConsts(string constant, int pointer)
+    private void LoadConsts(string constant, LoadTypes loadType)
     {
-        if (constant.All(Char.IsDigit))
+        if (loadType == LoadTypes.NumericData)
         {
             //nothing
         }
-        else if (constant == "addr1000") //TODO: hard code here
+        else if (loadType == LoadTypes.Variable)
         {
-            mainMemory.LoadToMemory("1000", indexForConst);
-            //mainMemory.Pointer = indexForConst;
+            int rememberPointer = mainMemory.Pointer;
+            mainMemory.LoadToMemory(indexForVariable + "", indexForConst);
+            mainMemory.Pointer = rememberPointer;
+            isPushedFromMemory = true;
+            bufferOffset = 0;
         }
-        else
+        else if(loadType == LoadTypes.StringData)
         {
             int rememberPointer = mainMemory.Pointer;
             char[] stringData = constant.ToCharArray();
@@ -194,19 +198,19 @@ public class ControlUnit
             howManyPushConst = stringData.Length;
             mainMemory.Pointer = rememberPointer;
             isPushedFromMemory = true;
-            //mainMemory.Pointer = indexForConst;
+            bufferOffset = 1;
         }
     }
-    private int bufferOffset = 1;
+    private int bufferOffset = 0;
     private void ExecuteMicroProgramm(string[] microProg)
     {
         int rememberPointer = mainMemory.Pointer;
-        if(isPushedFromMemory)
+        if (isPushedFromMemory)
         {
             mainMemory.Pointer = indexForConst + bufferOffset;
             howManyPushConst--;
             bufferOffset++;
-            isPushedFromMemory = howManyPushConst != 0;
+            isPushedFromMemory = howManyPushConst > 0;
         }
         foreach (var instruction in microProg)
         {
@@ -221,8 +225,9 @@ public class ControlUnit
                 ExecuteOperativeCommand(bytes);
             }
         }
-        if(isPushedFromMemory)
+        if (isPushedFromMemory)
             ExecuteMicroProgramm(microProg);
+        mainMemory.Pointer = rememberPointer;
     }
     private void ExecuteControlCommand(char[] controlCommad)
     {
@@ -339,4 +344,15 @@ public class ControlUnit
             dataPath.DoOperation("dec");
         }
     }
+}
+
+
+
+
+public enum LoadTypes
+{
+    StringData,
+    NumericData,
+    Variable,
+    Nothing
 }

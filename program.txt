@@ -1,5 +1,4 @@
-"line"
-.
-.
-.
-.
+variable
+9
+swap
+!
