@@ -4,10 +4,9 @@ public class Memory
     private string dataBeforeSnap = "";
     private int pointerBeforeSnap = 0;
     private int pointer = 0;
-    public void LoadToMemory(string data, int index)
+    public void LoadToMemory(int index, string data)
     {
         mainMemory[index] = data;
-        pointer = index;
     }
     public void LoadToMemory(string data)
     {

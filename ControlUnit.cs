@@ -119,9 +119,9 @@ public class ControlUnit
 
         for (int i = startProgrammIndex; i < forthProgramm.Length; i++)
         {
-            mainMemory.LoadToMemory(forthProgramm[i], i);
+            mainMemory.LoadToMemory(i, forthProgramm[i]);
         }
-        mainMemory.LoadToMemory(" ", forthProgramm.Length); //null pointer
+        mainMemory.LoadToMemory(forthProgramm.Length + startProgrammIndex, " "); //null pointer
         decoder = new Decoder(fileNameCM);
     }
     public void Work()
@@ -167,6 +167,10 @@ public class ControlUnit
                     }
                 }
             }
+            if (mainMemory.GetData(currentPointer) == "!")
+            {
+                indexForVariable++;
+            }
             currentPointer++;
         }
     }
@@ -178,25 +182,21 @@ public class ControlUnit
         }
         else if (loadType == LoadTypes.Variable)
         {
-            int rememberPointer = mainMemory.Pointer;
-            mainMemory.LoadToMemory(indexForVariable + "", indexForConst);
-            mainMemory.Pointer = rememberPointer;
+            mainMemory.LoadToMemory(indexForConst, indexForVariable + "");
             isPushedFromMemory = true;
             bufferOffset = 0;
         }
-        else if(loadType == LoadTypes.StringData)
+        else if (loadType == LoadTypes.StringData)
         {
-            int rememberPointer = mainMemory.Pointer;
             char[] stringData = constant.ToCharArray();
-            mainMemory.LoadToMemory(stringData.Length + "", indexForConst);
+            mainMemory.LoadToMemory(indexForConst, stringData.Length + "");
             int currentIndex = indexForConst + 1;
             for (int i = 0; i < stringData.Length; i++)
             {
-                mainMemory.LoadToMemory(stringData[i] + "", currentIndex);
+                mainMemory.LoadToMemory(currentIndex, stringData[i] + "");
                 currentIndex++;
             }
             howManyPushConst = stringData.Length;
-            mainMemory.Pointer = rememberPointer;
             isPushedFromMemory = true;
             bufferOffset = 1;
         }

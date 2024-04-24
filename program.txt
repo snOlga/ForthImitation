@@ -2,3 +2,7 @@ variable
 9
 swap
 !
+variable
+10
+swap
+!
