@@ -165,6 +165,10 @@ public class DataPath
     {
         mainTOSBeforeSnap = mainMemory.Data;
     }
+    public void ReloadReadMemory()
+    {
+        mainTOSBeforeSnap = mainMemory.GetData(int.Parse(mainTOS));
+    }
     #endregion reloads
 
     public Memory MainMemory

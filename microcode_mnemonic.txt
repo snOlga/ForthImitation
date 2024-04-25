@@ -127,6 +127,6 @@ inc
 snap stack pointer1
 reload tos1
 snap stack1
-snap memory
+reload read memory
 snap tos1
 

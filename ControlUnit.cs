@@ -5,6 +5,7 @@ public class ControlUnit
     private const int startProgrammIndex = 0;
     private const int indexForConst = 50;
     private int indexForVariable = 100;
+    public static int constIndexForVariable = 100;
     private LoadTypes loadType;
     private Decoder decoder;
     private (bool neg, bool zero, bool less) flags = (false, false, false);
@@ -97,13 +98,13 @@ public class ControlUnit
                     microProgramm.AddRange(microcommands[56..63]);
                     break;
                 case "swap":
-                    microProgramm.AddRange(microcommands[75..117]);
+                    microProgramm.AddRange(microcommands[75..118]);
                     break;
                 case "!":
                     microProgramm.AddRange(microcommands[70..74]);
                     break;
                 case "?":
-                    microProgramm.AddRange(microcommands[118..127]);
+                    microProgramm.AddRange(microcommands[119..128]);
                     break;
             }
 
@@ -270,7 +271,12 @@ public class ControlUnit
             if (controlCommad[9] == '1') //snap
                 dataPath.SnapMemory();
             if (controlCommad[10] == '1') //reload
-                dataPath.ReloadMemory();
+            {
+                if (controlCommad[13] == '0')
+                    dataPath.ReloadMemory();
+                if (controlCommad[13] == '1')
+                    dataPath.ReloadReadMemory();
+            }
         }
         else if (controlCommad[4] == '1') //tos
         {

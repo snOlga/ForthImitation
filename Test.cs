@@ -7,6 +7,7 @@ public class Test
     [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_math.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_math.txt")]
     [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_swap.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_swap.txt")]
     [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_string_const.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_string_const.txt")]
+    [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_variables.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_variables.txt")]
     public void DoTest(string testPath, string resultPath)
     {
         Memory memory = new Memory();
