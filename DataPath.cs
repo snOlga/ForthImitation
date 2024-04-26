@@ -159,6 +159,7 @@ public class DataPath
     public void ReloadBufferTOS()
     {
         bufStackBeforeSnap = bufferTOS;
+        mainTOSBeforeSnap = bufferTOS;
         if (bufferTOS.All(Char.IsDigit))
             aluBeforeSnap.rightData = int.Parse(bufferTOS);
     }

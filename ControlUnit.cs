@@ -63,6 +63,9 @@ public class ControlUnit
                     microProgramm.AddRange(microcommands[11..18]);
                     microProgramm.Add(microcommands[22]);
                     break;
+                case "rot":
+                    microProgramm.AddRange(microcommands[130..170]);
+                    break;
                 case "+":
                     microProgramm.AddRange(microcommands[24..27]);
                     microProgramm.Add(microcommands[27]);
