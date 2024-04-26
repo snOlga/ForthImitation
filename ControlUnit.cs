@@ -59,6 +59,10 @@ public class ControlUnit
                 case "drop":
                     microProgramm.AddRange(microcommands[2..10]);
                     break;
+                case "dup":
+                    microProgramm.AddRange(microcommands[11..18]);
+                    microProgramm.Add(microcommands[22]);
+                    break;
                 case "+":
                     microProgramm.AddRange(microcommands[24..27]);
                     microProgramm.Add(microcommands[27]);
