@@ -107,7 +107,8 @@ public class DataPath
         }
         else if (code == "out")
         {
-            streamWriter.Write(IOData);
+            if (IOData != "\uFFFF")
+                streamWriter.Write(IOData);
         }
         IOData = IODataBeforeSnap;
         mainTOSBeforeSnap = IOData;

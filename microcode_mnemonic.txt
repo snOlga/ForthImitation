@@ -113,6 +113,7 @@ snap null
 snap alu
 dec
 snap stack pointer2
+reload stack2
 snap tos2
 reload stack pointer2
 snap null

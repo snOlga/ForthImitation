@@ -98,13 +98,13 @@ public class ControlUnit
                     microProgramm.AddRange(microcommands[56..63]);
                     break;
                 case "swap":
-                    microProgramm.AddRange(microcommands[75..118]);
+                    microProgramm.AddRange(microcommands[75..119]);
                     break;
                 case "!":
                     microProgramm.AddRange(microcommands[70..74]);
                     break;
                 case "?":
-                    microProgramm.AddRange(microcommands[119..128]);
+                    microProgramm.AddRange(microcommands[120..129]);
                     break;
             }
 
