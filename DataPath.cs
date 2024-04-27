@@ -1,3 +1,5 @@
+using Serilog;
+
 public class DataPath
 {
     StreamReader streamReader;
@@ -42,11 +44,13 @@ public class DataPath
     {
         mainStackPointer = mainPointerBeforeSnap;
         aluBeforeSnap.rightData = mainPointerBeforeSnap;
+        Log.Information($"Snapped main pointer {mainStackPointer}");
     }
     public void SnapBufferPointer()
     {
         bufferStackPointer = bufPointerBeforeSnap;
         aluBeforeSnap.rightData = bufPointerBeforeSnap;
+        Log.Information($"Snapped buffer pointer {bufferStackPointer}");
     }
     public void SnapMainStack()
     {
@@ -56,6 +60,7 @@ public class DataPath
         mainMemory.BufferData = mainStackBeforeSnap;
         if (mainStackBeforeSnap.All(Char.IsDigit))
             aluBeforeSnap.rightData = int.Parse(mainStackBeforeSnap);
+        Log.Information($"Snapped main stack {mainStack[mainStackPointer]}");
     }
     public void SnapBufferStack()
     {
@@ -63,6 +68,7 @@ public class DataPath
         bufTOSBeforeSnap = bufStackBeforeSnap;
         if (bufStackBeforeSnap.All(Char.IsDigit))
             aluBeforeSnap.leftData = int.Parse(bufStackBeforeSnap);
+        Log.Information($"Snapped buffer stack {bufferStack[bufferStackPointer]}");
     }
     public void SnapMainTOS()
     {
@@ -75,6 +81,7 @@ public class DataPath
             aluBeforeSnap.rightData = int.Parse(mainTOSBeforeSnap);
             mainMemory.BufferPointer = int.Parse(mainTOSBeforeSnap);
         }
+        Log.Information($"Snapped main TOS {mainTOS}");
     }
     public void SnapBufferTOS()
     {
@@ -83,6 +90,7 @@ public class DataPath
         mainTOSBeforeSnap = bufTOSBeforeSnap;
         if (bufTOSBeforeSnap.All(Char.IsDigit))
             aluBeforeSnap.rightData = int.Parse(bufTOSBeforeSnap);
+        Log.Information($"Snapped buffer TOS {bufferTOS}");
     }
     public void SnapMemory()
     {
@@ -92,10 +100,12 @@ public class DataPath
     public void SnapAlu()
     {
         alu = aluBeforeSnap;
+        Log.Information($"Snapped alu {alu}");
     }
     public void SnapNull()
     {
         aluBeforeSnap.leftData = 0;
+        Log.Information($"Snapped null");
     }
     public void SnapIO(string code)
     {
@@ -112,10 +122,12 @@ public class DataPath
         }
         IOData = IODataBeforeSnap;
         mainTOSBeforeSnap = IOData;
+        Log.Information($"Snapped IO {IOData}");
     }
     public (bool neg, bool zero, bool less) SnapFlags()
     {
         flags = flagsBeforeSnap;
+        Log.Information($"Snapped flags {flags}");
         return flags;
     }
 
@@ -125,10 +137,12 @@ public class DataPath
     public void ReloadMainPointer()
     {
         aluBeforeSnap.rightData = mainStackPointer;
+        Log.Information($"Reload main pointer {mainStackPointer}");
     }
     public void ReloadBufferPointer()
     {
         aluBeforeSnap.rightData = bufferStackPointer;
+        Log.Information($"Reload buffer pointer {bufferStackPointer}");
     }
     public void ReloadMainStack()
     {
@@ -137,6 +151,7 @@ public class DataPath
         mainMemory.BufferData = mainStack[mainStackPointer];
         if (mainStack[mainStackPointer].All(Char.IsDigit))
             aluBeforeSnap.leftData = int.Parse(mainStack[mainStackPointer]);
+        Log.Information($"Reload main stack {mainStack[mainStackPointer]}");
     }
     public void ReloadBufferStack()
     {
@@ -144,6 +159,7 @@ public class DataPath
         mainStackBeforeSnap = bufferStack[bufferStackPointer];
         if (bufferStack[bufferStackPointer].All(Char.IsDigit))
             aluBeforeSnap.leftData = int.Parse(bufferStack[bufferStackPointer]);
+        Log.Information($"Reload buffer stack {bufferStack[bufferStackPointer]}");
     }
     public void ReloadMainTOS()
     {
@@ -155,6 +171,7 @@ public class DataPath
             aluBeforeSnap.rightData = int.Parse(mainTOS);
             mainMemory.BufferPointer = int.Parse(mainTOS);
         }
+        Log.Information($"Reload main TOS {mainTOS}");
     }
     public void ReloadBufferTOS()
     {
@@ -162,14 +179,17 @@ public class DataPath
         mainTOSBeforeSnap = bufferTOS;
         if (bufferTOS.All(Char.IsDigit))
             aluBeforeSnap.rightData = int.Parse(bufferTOS);
+        Log.Information($"Reload buffer TOS {bufferTOS}");
     }
     public void ReloadMemory()
     {
         mainTOSBeforeSnap = mainMemory.Data;
+        Log.Information($"Reload memory {mainTOSBeforeSnap}");
     }
     public void ReloadReadMemory()
     {
         mainTOSBeforeSnap = mainMemory.GetData(int.Parse(mainTOS));
+        Log.Information($"Reload memory {mainTOSBeforeSnap}");
     }
     #endregion reloads
 
@@ -212,12 +232,14 @@ public class DataPath
                 break;
         }
 
-        mainStackBeforeSnap = "" + result;
+        Log.Information($"Alu operation: {type}");
+
+        mainStackBeforeSnap = result.ToString();
         mainPointerBeforeSnap = result;
-        mainTOSBeforeSnap = "" + result;
-        bufStackBeforeSnap = "" + result;
+        mainTOSBeforeSnap = result.ToString();
+        bufStackBeforeSnap = result.ToString();
         bufPointerBeforeSnap = result;
-        bufTOSBeforeSnap = "" + result;
-        IODataBeforeSnap = "" + result;
+        bufTOSBeforeSnap = result.ToString();
+        IODataBeforeSnap = result.ToString();
     }
 }

@@ -1,3 +1,5 @@
+using Serilog;
+
 public class Memory
 {
     private string[] mainMemory = new string[10000];
@@ -7,10 +9,12 @@ public class Memory
     public void LoadToMemory(int index, string data)
     {
         mainMemory[index] = data;
+        Log.Information($"{data} loaded to memory at {index}");
     }
     public void LoadToMemory(string data)
     {
         mainMemory[pointer] = data;
+        Log.Information($"{data} loaded to memory at {pointer}");
     }
     public string GetData(int index)
     {
@@ -38,5 +42,6 @@ public class Memory
     {
         mainMemory[pointerBeforeSnap] = dataBeforeSnap;
         pointer = pointerBeforeSnap;
+        Log.Information($"Memory snapped: data {dataBeforeSnap} at {pointerBeforeSnap}");
     }
 }

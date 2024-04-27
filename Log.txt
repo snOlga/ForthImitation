@@ -1,0 +1,204 @@
+[14:09:53.374 [Information] Imitation started
+[14:09:53.389 [Information] 1 loaded to memory at 0
+[14:09:53.389 [Information] 1 loaded to memory at 1
+[14:09:53.389 [Information] 1 loaded to memory at 2
+[14:09:53.389 [Information] 10 loaded to memory at 3
+[14:09:53.389 [Information] 0 loaded to memory at 4
+[14:09:53.389 [Information] do loaded to memory at 5
+[14:09:53.389 [Information] + loaded to memory at 6
+[14:09:53.389 [Information] dup loaded to memory at 7
+[14:09:53.389 [Information] dup loaded to memory at 8
+[14:09:53.389 [Information] . loaded to memory at 9
+[14:09:53.389 [Information] " " loaded to memory at 10
+[14:09:53.389 [Information] . loaded to memory at 11
+[14:09:53.389 [Information] rot loaded to memory at 12
+[14:09:53.389 [Information] loop loaded to memory at 13
+[14:09:53.389 [Information]   loaded to memory at 14
+[14:09:53.391 [Information] Reload main pointer 0
+[14:09:53.391 [Information] Snapped null
+[14:09:53.392 [Information] Snapped alu (0, 0)
+[14:09:53.394 [Information] Alu operation: Inc
+[14:09:53.394 [Information] Snapped main pointer 1
+[14:09:53.401 [Information] Reload main TOS 0
+[14:09:53.401 [Information] Snapped main stack 0
+[14:09:53.401 [Information] Reload memory 1
+[14:09:53.401 [Information] Snapped main TOS 1
+[14:09:53.402 [Information] Reload main pointer 1
+[14:09:53.402 [Information] Snapped null
+[14:09:53.402 [Information] Snapped alu (0, 1)
+[14:09:53.402 [Information] Alu operation: Inc
+[14:09:53.402 [Information] Snapped main pointer 2
+[14:09:53.402 [Information] Reload main TOS 1
+[14:09:53.402 [Information] Snapped main stack 1
+[14:09:53.402 [Information] Reload memory 1
+[14:09:53.402 [Information] Snapped main TOS 1
+[14:09:53.402 [Information] Reload main pointer 2
+[14:09:53.402 [Information] Snapped null
+[14:09:53.402 [Information] Snapped alu (0, 2)
+[14:09:53.402 [Information] Alu operation: Inc
+[14:09:53.402 [Information] Snapped main pointer 3
+[14:09:53.402 [Information] Reload main TOS 1
+[14:09:53.402 [Information] Snapped main stack 1
+[14:09:53.402 [Information] Reload memory 1
+[14:09:53.402 [Information] Snapped main TOS 1
+[14:09:53.402 [Information] Reload main pointer 3
+[14:09:53.402 [Information] Snapped null
+[14:09:53.402 [Information] Snapped alu (0, 3)
+[14:09:53.402 [Information] Alu operation: Inc
+[14:09:53.402 [Information] Snapped main pointer 4
+[14:09:53.402 [Information] Reload main TOS 1
+[14:09:53.402 [Information] Snapped main stack 1
+[14:09:53.402 [Information] Reload memory 10
+[14:09:53.402 [Information] Snapped main TOS 10
+[14:09:53.402 [Information] Reload main pointer 4
+[14:09:53.402 [Information] Snapped null
+[14:09:53.402 [Information] Snapped alu (0, 4)
+[14:09:53.402 [Information] Alu operation: Inc
+[14:09:53.402 [Information] Snapped main pointer 5
+[14:09:53.402 [Information] Reload main TOS 10
+[14:09:53.402 [Information] Snapped main stack 10
+[14:09:53.402 [Information] Reload memory 0
+[14:09:53.402 [Information] Snapped main TOS 0
+[14:09:53.402 [Information] Reload buffer pointer 0
+[14:09:53.402 [Information] Snapped null
+[14:09:53.402 [Information] Snapped alu (0, 0)
+[14:09:53.402 [Information] Alu operation: Inc
+[14:09:53.402 [Information] Snapped buffer pointer 1
+[14:09:53.402 [Information] Reload main stack 10
+[14:09:53.402 [Information] Snapped buffer stack 10
+[14:09:53.402 [Information] Reload main TOS 0
+[14:09:53.402 [Information] Snapped buffer TOS 0
+[14:09:53.402 [Information] Reload main pointer 5
+[14:09:53.402 [Information] Reload main stack 10
+[14:09:53.403 [Information] Snapped main TOS 10
+[14:09:53.403 [Information] Reload main pointer 5
+[14:09:53.403 [Information] Snapped null
+[14:09:53.403 [Information] Snapped alu (0, 5)
+[14:09:53.403 [Information] Alu operation: Dec
+[14:09:53.403 [Information] Snapped main pointer 4
+[14:09:53.403 [Information] Reload main pointer 4
+[14:09:53.403 [Information] Reload main stack 1
+[14:09:53.403 [Information] Snapped main TOS 1
+[14:09:53.403 [Information] Reload main pointer 4
+[14:09:53.403 [Information] Snapped null
+[14:09:53.403 [Information] Snapped alu (0, 4)
+[14:09:53.403 [Information] Alu operation: Dec
+[14:09:53.403 [Information] Snapped main pointer 3
+[14:09:53.403 [Information] Reload buffer TOS 0
+[14:09:53.403 [Information] Reload buffer pointer 1
+[14:09:53.403 [Information] Reload buffer stack 10
+[14:09:53.403 [Information] Reload buffer TOS 0
+[14:09:53.403 [Information] Snapped alu (10, 0)
+[14:09:53.403 [Information] Alu operation: Less
+[14:09:53.403 [Information] Snapped flags (False, False, True)
+[14:09:53.403 [Information] Reload main TOS 1
+[14:09:53.403 [Information] Reload main stack 1
+[14:09:53.403 [Information] Snapped alu (1, 1)
+[14:09:53.403 [Information] Alu operation: Add
+[14:09:53.403 [Information] Snapped flags (False, False, True)
+[14:09:53.403 [Information] Snapped main TOS 2
+[14:09:53.403 [Information] Reload main pointer 3
+[14:09:53.403 [Information] Snapped null
+[14:09:53.403 [Information] Snapped alu (0, 3)
+[14:09:53.403 [Information] Alu operation: Dec
+[14:09:53.403 [Information] Snapped main pointer 2
+[14:09:53.403 [Information] Reload main pointer 2
+[14:09:53.403 [Information] Snapped null
+[14:09:53.403 [Information] Snapped alu (0, 2)
+[14:09:53.403 [Information] Alu operation: Inc
+[14:09:53.403 [Information] Snapped main pointer 3
+[14:09:53.403 [Information] Reload main TOS 2
+[14:09:53.403 [Information] Snapped main stack 2
+[14:09:53.403 [Information] Snapped main TOS 2
+[14:09:53.403 [Information] Reload main pointer 3
+[14:09:53.403 [Information] Snapped null
+[14:09:53.403 [Information] Snapped alu (0, 3)
+[14:09:53.403 [Information] Alu operation: Inc
+[14:09:53.403 [Information] Snapped main pointer 4
+[14:09:53.403 [Information] Reload main TOS 2
+[14:09:53.403 [Information] Snapped main stack 2
+[14:09:53.403 [Information] Snapped main TOS 2
+[14:09:53.403 [Information] Reload main TOS 2
+[14:09:53.403 [Information] Snapped IO 2
+[14:09:53.403 [Information] Reload main pointer 4
+[14:09:53.403 [Information] Reload main stack 2
+[14:09:53.403 [Information] Snapped main TOS 2
+[14:09:53.403 [Information] Reload main pointer 4
+[14:09:53.403 [Information] Snapped null
+[14:09:53.403 [Information] Snapped alu (0, 4)
+[14:09:53.403 [Information] Alu operation: Dec
+[14:09:53.403 [Information] Snapped main pointer 3
+[14:09:53.403 [Information] 1 loaded to memory at 50
+[14:09:53.403 [Information]   loaded to memory at 51
+[14:09:53.403 [Information] Reload main pointer 3
+[14:09:53.403 [Information] Snapped null
+[14:09:53.404 [Information] Snapped alu (0, 3)
+[14:09:53.404 [Information] Alu operation: Inc
+[14:09:53.404 [Information] Snapped main pointer 4
+[14:09:53.404 [Information] Reload main TOS 2
+[14:09:53.404 [Information] Snapped main stack 2
+[14:09:53.404 [Information] Reload memory  
+[14:09:53.404 [Information] Snapped main TOS  
+[14:09:53.404 [Information] Reload main TOS  
+[14:09:53.404 [Information] Snapped IO  
+[14:09:53.404 [Information] Reload main pointer 4
+[14:09:53.404 [Information] Reload main stack 2
+[14:09:53.404 [Information] Snapped main TOS 2
+[14:09:53.404 [Information] Reload main pointer 4
+[14:09:53.404 [Information] Snapped null
+[14:09:53.404 [Information] Snapped alu (0, 4)
+[14:09:53.404 [Information] Alu operation: Dec
+[14:09:53.404 [Information] Snapped main pointer 3
+[14:09:53.404 [Information] Reload buffer pointer 1
+[14:09:53.404 [Information] Snapped null
+[14:09:53.404 [Information] Snapped alu (0, 1)
+[14:09:53.404 [Information] Alu operation: Inc
+[14:09:53.404 [Information] Snapped buffer pointer 2
+[14:09:53.404 [Information] Reload buffer TOS 0
+[14:09:53.404 [Information] Snapped buffer stack 0
+[14:09:53.404 [Information] Reload buffer pointer 2
+[14:09:53.404 [Information] Snapped null
+[14:09:53.404 [Information] Snapped alu (0, 2)
+[14:09:53.404 [Information] Alu operation: Inc
+[14:09:53.404 [Information] Snapped buffer pointer 3
+[14:09:53.404 [Information] Reload main pointer 3
+[14:09:53.404 [Information] Snapped null
+[14:09:53.404 [Information] Snapped alu (0, 3)
+[14:09:53.404 [Information] Alu operation: Dec
+[14:09:53.404 [Information] Snapped main pointer 2
+[14:09:53.404 [Information] Reload main stack 1
+[14:09:53.404 [Information] Snapped buffer stack 1
+[14:09:53.404 [Information] Snapped buffer TOS 1
+[14:09:53.404 [Information] Reload main TOS 2
+[14:09:53.404 [Information] Snapped main stack 2
+[14:09:53.404 [Information] Reload buffer TOS 1
+[14:09:53.404 [Information] Snapped main TOS 1
+[14:09:53.404 [Information] Reload main pointer 2
+[14:09:53.404 [Information] Snapped null
+[14:09:53.404 [Information] Snapped alu (0, 2)
+[14:09:53.404 [Information] Alu operation: Inc
+[14:09:53.404 [Information] Snapped main pointer 3
+[14:09:53.404 [Information] Reload buffer pointer 3
+[14:09:53.404 [Information] Snapped null
+[14:09:53.404 [Information] Snapped alu (0, 3)
+[14:09:53.404 [Information] Alu operation: Dec
+[14:09:53.404 [Information] Snapped buffer pointer 2
+[14:09:53.404 [Information] Reload buffer stack 0
+[14:09:53.404 [Information] Snapped buffer TOS 0
+[14:09:53.404 [Information] Reload buffer pointer 2
+[14:09:53.404 [Information] Snapped null
+[14:09:53.404 [Information] Snapped alu (0, 2)
+[14:09:53.404 [Information] Alu operation: Dec
+[14:09:53.404 [Information] Snapped buffer pointer 1
+[14:09:53.404 [Information] Reload buffer TOS 0
+[14:09:53.404 [Information] Snapped null
+[14:09:53.404 [Information] Snapped alu (0, 0)
+[14:09:53.404 [Information] Alu operation: Inc
+[14:09:53.404 [Information] Snapped buffer TOS 1
+[14:09:53.404 [Information] Reload buffer TOS 1
+[14:09:53.404 [Information] Reload buffer pointer 1
+[14:09:53.404 [Information] Reload buffer stack 10
+[14:09:53.404 [Information] Reload buffer TOS 1
+[14:09:53.404 [Information] Snapped alu (10, 1)
+[14:09:53.404 [Information] Alu operation: Less
+[14:09:53.404 [Information] Snapped flags (False, False, True)
