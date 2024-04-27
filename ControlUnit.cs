@@ -144,7 +144,7 @@ public class ControlUnit
 
             ExecuteMicroProgramm(decodeResult.microCode);
 
-            Postprocessing(mainMemory, currentPointer);
+            currentPointer = Postprocessing(mainMemory, currentPointer);
 
             currentPointer++;
         }
@@ -156,7 +156,7 @@ public class ControlUnit
             LoadConsts(decoder.DataToMemory, decodeResult.loadType);
         }
     }
-    private void Postprocessing(Memory mainMemory, int currentPointer)
+    private int Postprocessing(Memory mainMemory, int currentPointer)
     {
         //jumping here
         if (mainMemory.GetData(currentPointer) == "else")
@@ -190,6 +190,7 @@ public class ControlUnit
         {
             indexForVariable++;
         }
+        return currentPointer;
     }
     private void LoadConsts(string constant, LoadTypes loadType)
     {
