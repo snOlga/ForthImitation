@@ -11,6 +11,7 @@ public class ControlUnit
     private (bool neg, bool zero, bool less) flags = (false, false, false);
     private int howManyPushConst = 0;
     private bool isPushedFromMemory = false;
+    private int bufferOffset = 0;
     private class Decoder
     {
         private string[] microcommands;
@@ -139,47 +140,55 @@ public class ControlUnit
         {
             (string[] microCode, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
 
-            if (decodeResult.loadType != LoadTypes.Nothing)
-            {
-                LoadConsts(decoder.DataToMemory, decodeResult.loadType);
-            }
+            Preprocessing(decodeResult);
 
             ExecuteMicroProgramm(decodeResult.microCode);
 
+            Postprocessing(mainMemory, currentPointer);
 
-            //jumping here
-            if (mainMemory.GetData(currentPointer) == "else")
+            currentPointer++;
+        }
+    }
+    private void Preprocessing((string[] microCode, LoadTypes loadType) decodeResult)
+    {
+        if (decodeResult.loadType != LoadTypes.Nothing)
+        {
+            LoadConsts(decoder.DataToMemory, decodeResult.loadType);
+        }
+    }
+    private void Postprocessing(Memory mainMemory, int currentPointer)
+    {
+        //jumping here
+        if (mainMemory.GetData(currentPointer) == "else")
+        {
+            while (mainMemory.GetData(currentPointer) != "then")
             {
-                while (mainMemory.GetData(currentPointer) != "then")
+                currentPointer++;
+            }
+        }
+        if (mainMemory.GetData(currentPointer) == "if")
+        {
+            if (flags.zero)
+            {
+                while (mainMemory.GetData(currentPointer) != "else")
                 {
                     currentPointer++;
                 }
             }
-            if (mainMemory.GetData(currentPointer) == "if")
+        }
+        if (mainMemory.GetData(currentPointer) == "loop")
+        {
+            if (flags.less)
             {
-                if (flags.zero)
+                while (mainMemory.GetData(currentPointer) != "do")
                 {
-                    while (mainMemory.GetData(currentPointer) != "else")
-                    {
-                        currentPointer++;
-                    }
+                    currentPointer--;
                 }
             }
-            if (mainMemory.GetData(currentPointer) == "loop")
-            {
-                if (flags.less)
-                {
-                    while (mainMemory.GetData(currentPointer) != "do")
-                    {
-                        currentPointer--;
-                    }
-                }
-            }
-            if (mainMemory.GetData(currentPointer) == "!")
-            {
-                indexForVariable++;
-            }
-            currentPointer++;
+        }
+        if (mainMemory.GetData(currentPointer) == "!")
+        {
+            indexForVariable++;
         }
     }
     private void LoadConsts(string constant, LoadTypes loadType)
@@ -209,7 +218,6 @@ public class ControlUnit
             bufferOffset = 1;
         }
     }
-    private int bufferOffset = 0;
     private void ExecuteMicroProgramm(string[] microProg)
     {
         int rememberPointer = mainMemory.Pointer;
@@ -330,42 +338,48 @@ public class ControlUnit
     {
         if (operativeCommad[1] == '1')
         {
-            dataPath.DoOperation("+");
+            dataPath.DoOperation(MathOperation.Add);
         }
         if (operativeCommad[2] == '1')
         {
-            dataPath.DoOperation("inc");
+            dataPath.DoOperation(MathOperation.Inc);
         }
         if (operativeCommad[3] == '1')
         {
-            dataPath.DoOperation("and");
+            dataPath.DoOperation(MathOperation.And);
         }
         if (operativeCommad[4] == '1')
         {
-            dataPath.DoOperation("or");
+            dataPath.DoOperation(MathOperation.Or);
         }
         if (operativeCommad[5] == '1')
         {
-            dataPath.DoOperation("<");
+            dataPath.DoOperation(MathOperation.Less);
         }
         if (operativeCommad[6] == '1')
         {
-            dataPath.DoOperation("-");
+            dataPath.DoOperation(MathOperation.Subtract);
         }
         if (operativeCommad[7] == '1')
         {
-            dataPath.DoOperation("dec");
+            dataPath.DoOperation(MathOperation.Dec);
         }
     }
 }
-
-
-
-
 public enum LoadTypes
 {
     StringData,
     NumericData,
     Variable,
     Nothing
+}
+public enum MathOperation
+{
+    Add,
+    Subtract,
+    Or,
+    And,
+    Inc,
+    Dec,
+    Less
 }

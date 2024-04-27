@@ -177,36 +177,36 @@ public class DataPath
     {
         get { return mainMemory; }
     }
-    public void DoOperation(string type)
+    public void DoOperation(MathOperation type)
     {
         int result = 0;
         switch (type)
         {
-            case "+":
+            case MathOperation.Add:
                 result = alu.leftData + alu.rightData;
                 flagsBeforeSnap = (result < 0, result == 0, flagsBeforeSnap.less);
                 break;
-            case "-":
+            case MathOperation.Subtract:
                 result = alu.leftData - alu.rightData;
                 flagsBeforeSnap = (result < 0, result == 0, flagsBeforeSnap.less);
                 break;
-            case "<":
+            case MathOperation.Less:
                 result = alu.rightData < alu.leftData ? 1 : 0;
                 flagsBeforeSnap = (flagsBeforeSnap.neg, flagsBeforeSnap.zero, result == 1);
                 break;
-            case "and":
+            case MathOperation.And:
                 result = alu.leftData & alu.rightData;
                 flagsBeforeSnap = (flagsBeforeSnap.neg, result == 0, flagsBeforeSnap.less);
                 break;
-            case "or":
+            case MathOperation.Or:
                 result = alu.leftData | alu.rightData;
                 flagsBeforeSnap = (flagsBeforeSnap.neg, result == 0, flagsBeforeSnap.less);
                 break;
-            case "inc":
+            case MathOperation.Inc:
                 result = alu.rightData + 1;
                 flagsBeforeSnap = (result < 0, result == 0, flagsBeforeSnap.less);
                 break;
-            case "dec":
+            case MathOperation.Dec:
                 result = alu.rightData - 1;
                 flagsBeforeSnap = (result < 0, result == 0, flagsBeforeSnap.less);
                 break;
