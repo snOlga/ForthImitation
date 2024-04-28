@@ -3,7 +3,7 @@ public class ControlUnit
     Memory mainMemory;
     DataPath dataPath;
     private const int startProgrammIndex = 0;
-    private const int indexForConst = 50;
+    private const int indexForConst = 500;
     private int indexForVariable = 100;
     public static int constIndexForVariable = 100;
     private LoadTypes loadType;

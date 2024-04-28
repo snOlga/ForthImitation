@@ -131,7 +131,7 @@ snap stack1
 reload read memory
 snap tos1
 
-reload stack pointer2
+reload stack pointer2 -- rot
 snap null
 snap alu
 inc
@@ -154,7 +154,7 @@ snap tos2
 reload tos1
 snap stack1
 reload tos2
-snap tos1 !!!!!!!smt weird here
+snap tos1
 reload stack pointer1
 snap null
 snap alu
@@ -165,7 +165,7 @@ snap null
 snap alu
 dec
 snap stack pointer2
-reload stack2 !!!!!!
+reload stack2
 snap tos2
 reload stack pointer2
 snap null
