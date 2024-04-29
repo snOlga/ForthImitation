@@ -153,7 +153,14 @@ public class DataPath
         if (code == "in")
         {
             char input = (char)streamReader.Read();
-            IODataBeforeSnap = "" + input;
+            IODataBeforeSnap = input.ToString();
+            if (IODataBeforeSnap == "\uFFFF")
+            {
+                Log.Error("Null input");
+                Console.WriteLine("Tick count: " + DataPath.TickCounter);
+                Console.WriteLine(ControlUnit.GetMetaData());
+                System.Environment.Exit(1);
+            }
         }
         else if (code == "out")
         {
@@ -173,7 +180,6 @@ public class DataPath
         Log.Warning(GetState());
         return flags;
     }
-
     #endregion snaps
 
     #region reloads
@@ -249,7 +255,6 @@ public class DataPath
         Log.Warning(GetState());
     }
     #endregion reloads
-
     public Memory MainMemory
     {
         get { return mainMemory; }

@@ -1,5 +1,13 @@
-"!dlrow ,olleH!!!!"
+: fib dup rot + ;
+1
+1
+10
 0
 do
+dup
 .
+" "
+drop
+.
+fib
 loop

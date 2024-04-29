@@ -3,7 +3,7 @@ public class ControlUnit
     Memory mainMemory;
     DataPath dataPath;
     private const int startProgrammIndex = 0;
-    private const int indexForConst = 50;
+    private const int indexForConst = 500;
     private int indexForVariable = 100;
     public static int constIndexForVariable = 100;
     private Decoder decoder;
@@ -11,6 +11,15 @@ public class ControlUnit
     private int howManyPushConst = 0;
     private bool isPushedFromMemory = false;
     private int bufferOffset = 0;
+    #region metadata
+    private static int microCount = 0;
+    private static int programSize = 0;
+    private static int instructionCount = 0;
+    public static string GetMetaData()
+    {
+        return $"Microcommands count: {microCount} | Program size in bit: {programSize} | Instruction count: {instructionCount}";
+    }
+    #endregion
     private class Decoder
     {
         private string[] microcommands;
@@ -29,7 +38,7 @@ public class ControlUnit
             List<string> microProgramm = new List<string>();
             dataToMemory = "";
 
-            if (name.All(char.IsDigit))
+            if (int.TryParse(name, out int nevermind))
             {
                 loadType = LoadTypes.NumericData;
             }
@@ -170,6 +179,7 @@ public class ControlUnit
             currentPointer = Postprocessing(mainMemory, currentPointer);
 
             currentPointer++;
+            instructionCount++;
         }
     }
     private void Preprocessing((string[] microCode, LoadTypes loadType) decodeResult)
@@ -254,6 +264,8 @@ public class ControlUnit
         }
         foreach (var instruction in microProg)
         {
+            microCount++;
+            programSize += instruction.Length;
             char[] bytes = instruction.ToCharArray();
 
             if (bytes[0] == '1')

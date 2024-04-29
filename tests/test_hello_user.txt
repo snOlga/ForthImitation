@@ -1,0 +1,25 @@
+" ,olleH"
+0
+do
+.
+loop
+variable
+4
+0
+do
+key
+swap
+!
+1
++
+loop
+4
+-
+4
+0
+do
+?
+.
+1
++
+loop
