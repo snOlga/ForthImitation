@@ -214,7 +214,6 @@ variable     - 9
 ```
 
 ## Транслятор
-
 Интерфейс командной строки: TODO: here
 
 Реализован в файле [ControlUnit.cs](ControlUnit.cs) классом Decoder

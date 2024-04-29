@@ -13,6 +13,7 @@ public class Test
     [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_simple_procedure.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_simple_procedure.txt")]
     [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_fibonacci.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_fibonacci.txt")]
     [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_fibonacci_procedure.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_fibonacci_procedure.txt")]
+    [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_hello_world.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_hello_world.txt")]
     public void DoTest(string testPath, string resultPath)
     {
         Memory memory = new Memory();

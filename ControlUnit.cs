@@ -3,10 +3,9 @@ public class ControlUnit
     Memory mainMemory;
     DataPath dataPath;
     private const int startProgrammIndex = 0;
-    private const int indexForConst = 500;
+    private const int indexForConst = 50;
     private int indexForVariable = 100;
     public static int constIndexForVariable = 100;
-    private LoadTypes loadType;
     private Decoder decoder;
     private (bool neg, bool zero, bool less) flags = (false, false, false);
     private int howManyPushConst = 0;
@@ -134,7 +133,7 @@ public class ControlUnit
             if (instruction.Contains(':'))
             {
                 string[] initProcedure = instruction.Split(" ");
-                namedProcedures.Add(initProcedure[1], initProcedure[2..(initProcedure.Length-1)]);
+                namedProcedures.Add(initProcedure[1], initProcedure[2..(initProcedure.Length - 1)]);
                 indexForLoading--;
             }
             else if (namedProcedures.ContainsKey(instruction))
@@ -154,13 +153,13 @@ public class ControlUnit
 
             indexForLoading++;
         }
-        mainMemory.LoadToMemory(indexForLoading, " "); //null pointer
+        mainMemory.LoadToMemory(indexForLoading, "\0"); //null pointer
         decoder = new Decoder(fileNameCM);
     }
     public void Work()
     {
         int currentPointer = startProgrammIndex;
-        while (mainMemory.GetData(currentPointer) != " ")
+        while (mainMemory.GetData(currentPointer) != "\0")
         {
             (string[] microCode, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
 
@@ -224,23 +223,23 @@ public class ControlUnit
         }
         else if (loadType == LoadTypes.Variable)
         {
-            mainMemory.LoadToMemory(indexForConst, indexForVariable + "");
+            mainMemory.LoadToMemory(indexForConst, indexForVariable.ToString());
             isPushedFromMemory = true;
             bufferOffset = 0;
         }
         else if (loadType == LoadTypes.StringData)
         {
             char[] stringData = constant.ToCharArray();
-            mainMemory.LoadToMemory(indexForConst, stringData.Length + "");
-            int currentIndex = indexForConst + 1;
+            int currentIndex = indexForConst;
             for (int i = 0; i < stringData.Length; i++)
             {
-                mainMemory.LoadToMemory(currentIndex, stringData[i] + "");
+                mainMemory.LoadToMemory(currentIndex, stringData[i].ToString());
                 currentIndex++;
             }
-            howManyPushConst = stringData.Length;
+            mainMemory.LoadToMemory(currentIndex, stringData.Length.ToString());
+            howManyPushConst = stringData.Length + 1;
             isPushedFromMemory = true;
-            bufferOffset = 1;
+            bufferOffset = 0;
         }
     }
     private void ExecuteMicroProgramm(string[] microProg)

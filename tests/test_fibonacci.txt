@@ -9,6 +9,7 @@ dup
 dup
 .
 " "
+drop
 .
 rot
 loop
