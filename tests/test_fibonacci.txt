@@ -1,12 +1,14 @@
-: fib dup rot + ;
+1
 1
 1
 10
 0
 do
++
+dup
 dup
 .
 " "
 .
-fib
+rot
 loop

@@ -119,6 +119,7 @@ public class ControlUnit
             return (microProgramm.ToArray(), loadType);
         }
     }
+    private Dictionary<string, string[]> namedProcedures = new Dictionary<string, string[]>();
     public ControlUnit(string fileNameMainProg, string fileNameCM, DataPath actualDataPath)
     {
         dataPath = actualDataPath;
@@ -126,11 +127,34 @@ public class ControlUnit
 
         string[] forthProgramm = File.ReadAllLines(fileNameMainProg);
 
-        for (int i = startProgrammIndex; i < forthProgramm.Length; i++)
+        int indexForLoading = startProgrammIndex;
+
+        foreach (string instruction in forthProgramm)
         {
-            mainMemory.LoadToMemory(i, forthProgramm[i]);
+            if (instruction.Contains(':'))
+            {
+                string[] initProcedure = instruction.Split(" ");
+                namedProcedures.Add(initProcedure[1], initProcedure[2..(initProcedure.Length-1)]);
+                indexForLoading--;
+            }
+            else if (namedProcedures.ContainsKey(instruction))
+            {
+                string[] currentProcedure = namedProcedures[instruction];
+                foreach (string instrInProcedure in currentProcedure)
+                {
+                    mainMemory.LoadToMemory(indexForLoading, instrInProcedure);
+                    indexForLoading++;
+                }
+                indexForLoading--;
+            }
+            else
+            {
+                mainMemory.LoadToMemory(indexForLoading, instruction);
+            }
+
+            indexForLoading++;
         }
-        mainMemory.LoadToMemory(forthProgramm.Length + startProgrammIndex, " "); //null pointer
+        mainMemory.LoadToMemory(indexForLoading, " "); //null pointer
         decoder = new Decoder(fileNameCM);
     }
     public void Work()

@@ -10,6 +10,9 @@ public class Test
     [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_variables.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_variables.txt")]
     [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_dup.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_dup.txt")]
     [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_rot.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_rot.txt")]
+    [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_simple_procedure.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_simple_procedure.txt")]
+    [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_fibonacci.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_fibonacci.txt")]
+    [TestCase("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\test_fibonacci_procedure.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\result_fibonacci_procedure.txt")]
     public void DoTest(string testPath, string resultPath)
     {
         Memory memory = new Memory();
