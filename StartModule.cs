@@ -31,7 +31,6 @@ ControlUnit controlUnit = new ControlUnit(mainProg, microcode, dataPath);
 controlUnit.Work();
 
 dataPath.OutputFile.Close();
-
 Log.CloseAndFlush();
 
 Console.WriteLine("Tick count: " + DataPath.TickCounter);
