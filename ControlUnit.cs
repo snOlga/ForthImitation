@@ -153,13 +153,13 @@ public class ControlUnit
 
             indexForLoading++;
         }
-        mainMemory.LoadToMemory(indexForLoading, "\0"); //null pointer
+        mainMemory.LoadToMemory(indexForLoading, "_"); //null pointer
         decoder = new Decoder(fileNameCM);
     }
     public void Work()
     {
         int currentPointer = startProgrammIndex;
-        while (mainMemory.GetData(currentPointer) != "\0")
+        while (mainMemory.GetData(currentPointer) != "_")
         {
             (string[] microCode, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
 

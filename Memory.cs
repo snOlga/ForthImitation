@@ -8,6 +8,7 @@ public class Memory
     private int pointer = 0;
     public void LoadToMemory(int index, string data)
     {
+        DataPath.TickCounter++;
         mainMemory[index] = data;
         Log.Information($"{data} loaded to memory at {index}");
     }
@@ -18,6 +19,7 @@ public class Memory
     }
     public string GetData(int index)
     {
+        DataPath.TickCounter += 2;
         pointer = index;
         return mainMemory[index];
     }
@@ -32,7 +34,11 @@ public class Memory
     }
     public string Data
     {
-        get { return mainMemory[pointer]; }
+        get
+        {
+            DataPath.TickCounter++;
+            return mainMemory[pointer];
+        }
     }
     public int BufferPointer
     {
@@ -40,6 +46,7 @@ public class Memory
     }
     public void Snap()
     {
+        DataPath.TickCounter += 2;
         mainMemory[pointerBeforeSnap] = dataBeforeSnap;
         pointer = pointerBeforeSnap;
         Log.Information($"Memory snapped: data {dataBeforeSnap} at {pointerBeforeSnap}");

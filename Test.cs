@@ -17,7 +17,7 @@ public class Test
     public void DoTest(string testPath, string resultPath)
     {
         Memory memory = new Memory();
-        DataPath dataPath = new DataPath(memory, "D:\\ITMO\\2_year\\csa\\ForthImitation\\input.txt");
+        DataPath dataPath = new DataPath(memory, "D:\\ITMO\\2_year\\csa\\ForthImitation\\input.txt", "D:\\ITMO\\2_year\\csa\\ForthImitation\\output.txt");
         ControlUnit controlUnit = new ControlUnit(testPath,
                                                 "D:\\ITMO\\2_year\\csa\\ForthImitation\\microcode.txt", dataPath);
 
