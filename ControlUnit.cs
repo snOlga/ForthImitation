@@ -133,13 +133,28 @@ public class ControlUnit
         dataPath = actualDataPath;
         mainMemory = dataPath.MainMemory;
 
-        string[] forthProgramm = File.ReadAllLines(fileNameMainProg);
+        string forthProgrammLine = File.ReadAllText(fileNameMainProg);
+        string[] forthProgramm = forthProgrammLine.Split(' ');
 
         int indexForLoading = startProgrammIndex;
 
-        foreach (string instruction in forthProgramm)
+        string rememberLine = "";
+
+        for (int instrIndex = 0; instrIndex < forthProgramm.Length; instrIndex++)
         {
-            if (instruction.Contains(':'))
+            string instruction = forthProgramm[instrIndex];
+            if (instruction.Contains('\"') && instruction.Substring(0, 1) == "\"")
+            {
+                rememberLine += instruction;
+                instrIndex++;
+                while(instruction.Substring(0, 1) != "\"")
+                {
+                    rememberLine += instruction;
+                    instrIndex++;
+                }
+                rememberLine += instruction;
+            }
+            if (instruction == ":")
             {
                 string[] initProcedure = instruction.Split(" ");
                 namedProcedures.Add(initProcedure[1], initProcedure[2..(initProcedure.Length - 1)]);
@@ -173,7 +188,7 @@ public class ControlUnit
             (string[] microCode, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
 
             Preprocessing(decodeResult);
-            
+
             try
             {
                 ExecuteMicroProgramm(decodeResult.microCode);
