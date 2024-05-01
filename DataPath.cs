@@ -159,7 +159,7 @@ public class DataPath
                 Log.Error("Null input");
                 Console.WriteLine("Tick count: " + DataPath.TickCounter);
                 Console.WriteLine(ControlUnit.GetMetaData());
-                System.Environment.Exit(1);
+                throw new NullReferenceException("Null from input!");
             }
         }
         else if (code == "out")

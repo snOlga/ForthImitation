@@ -173,8 +173,15 @@ public class ControlUnit
             (string[] microCode, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
 
             Preprocessing(decodeResult);
-
-            ExecuteMicroProgramm(decodeResult.microCode);
+            
+            try
+            {
+                ExecuteMicroProgramm(decodeResult.microCode);
+            }
+            catch (System.NullReferenceException)
+            {
+                return;
+            }
 
             currentPointer = Postprocessing(mainMemory, currentPointer);
 
