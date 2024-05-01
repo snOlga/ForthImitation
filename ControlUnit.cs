@@ -145,14 +145,18 @@ public class ControlUnit
             string instruction = forthProgramm[instrIndex];
             if (instruction.Contains('\"') && instruction.Substring(0, 1) == "\"")
             {
-                rememberLine += instruction;
+                rememberLine += instruction + " ";
                 instrIndex++;
-                while(instruction.Substring(0, 1) != "\"")
+                instruction = forthProgramm[instrIndex];
+                while (!instruction.Contains('\"'))
                 {
-                    rememberLine += instruction;
+                    rememberLine += instruction + " ";
                     instrIndex++;
+                    instruction = forthProgramm[instrIndex];
                 }
                 rememberLine += instruction;
+                instruction = rememberLine;
+                rememberLine = "";
             }
             if (instruction == ":")
             {

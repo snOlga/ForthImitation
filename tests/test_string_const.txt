@@ -1,6 +1,1 @@
-"line"
-drop
-.
-.
-.
-.
+"line" drop . . . .

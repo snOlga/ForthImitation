@@ -1,5 +1,1 @@
-"!dlrow ,olleH"
-0
-do
-.
-loop
+"!dlrow ,olleH" 0 do . loop
