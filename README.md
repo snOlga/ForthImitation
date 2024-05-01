@@ -9,56 +9,60 @@ forth | stack | neum | **mc** -> hw | instr | **binary** -> struct | stream | po
 # Fort
 Используется стековая архитектура, поэтому все операции выполняются с учётом стека.
 
-```
-<number>    - push contsnt to stack
+```<number>```    - push contsnt to stack
 
-"<line>"    - push string to stack as a char array, first node is string length
+```"<line>"```    - push string to stack as a char array, first node is string length
 
-.           - print and pop top of the stack
+```.```           - print and pop top of the stack
 
-key         - read and push a value from input
+```key```         - read and push a value from input
 
-drop        - pop top of the stack
+```drop```        - pop top of the stack
 
-dup         - duplicate top of the stack and push it
+```dup```         - duplicate top of the stack and push it
 
-swap        - change position of two values on top of the stack
+```swap```        - change position of two values on top of the stack
 
-rot         - change position of two values around second value from top of the stack (ex. 1 2 3 rot - will be 3 2 1)
+```rot```         - change position of two values around second value from top of the stack (ex. 1 2 3 rot - will be 3 2 1)
 
---- operations, that pop 2 values from the stack and push result ---
+---
+```+```           - add top of the stack with second number from top
 
-+           - add top of the stack with second number from top
+```-```           - subtract top of the stack from second number from top
 
--           - subtract top of the stack from second number from top
+```and```         - logic 'and' with two numbers from stack
 
-and         - logic 'and' with two numbers from stack
+```or```          - logic 'or' with two numbers from stack
 
-or          - logic 'or' with two numbers from stack
+```<```           - check if top of the stack is less than second value in stack 
 
-<           - check if top of the stack is less than second value in stack 
+---
 
---- ---
+```<values>``` <br>
+```if``` <br>
+```<commands>```<br>
+```else ```<br>
+```<commands>```<br>
+```then```        - check if there is 'true' (positive number) on top of the stack; jump to else if negative or do program
 
-<values> 
-if 
-<commands>
-else 
-<commands>
-then        - check if there is 'true' (positive number) on top of the stack; jump to else if negative or do program
+```<max value>```<br>
+```<start value>```<br>
+```do```          - start looping and do it according to 'if' principle; saves looping values in buffer stack
+```<commands>```<br>
+```loop```        - increment top of the buffer stack and jump to next command after 'do' or end looping; working according to 'if' principle     
 
-<max value>
-<start value>
-do          - start looping and do it according to 'if' principle; saves looping values in buffer stack
-<commands>
-loop        - increment top of the buffer stack and jump to next command after 'do' or end looping; working according to 'if' principle     
+```variable```     - returns the index of free space of memory
 
-variable     - returns the index of free space of memory
+```!```            - push data using the index in the top of the stack to memory
 
-!            - push data using the index in the top of the stack to memory
+```?```            - read data and push it to stack using the index in the top of the stack from memory
 
-?            - read data and push it to stack using the index in the top of the stack from memory
-```
+---
+
+```: <procedure name> <code> ;``` - procedure declaration
+```<procedure name>```            - procedure call
+
+---
 
 - Код выполняется последовательно с возможностью ветвления и циклов
 - Комментарии не поддерживаются
@@ -101,6 +105,7 @@ variable     - returns the index of free space of memory
 - Строки представлены в виде массива символов, где начальная запись - длина строки
 - Команды транслируются в микрокод
 - Доступ к памяти осуществляется через адрес, хранящийся в вершине стека или в регистре pointer блока memory
+- Есть возможность объявления процедуры через ```:``` в начале строки
 
 Операции инструкций осуществляются над стеком: над вершиной, вершиной и вторым число, вершиной и третьим числом со стека.
 
