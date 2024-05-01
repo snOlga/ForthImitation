@@ -19,5 +19,5 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Test
-      run: dotnet test --no-restore
+      run: dotnet test
 
