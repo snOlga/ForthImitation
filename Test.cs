@@ -61,10 +61,10 @@ public class Test
                 "\\inputs\\input_cat.txt")]
     public void TestsNoInput(string testPath, string resultPath, string logging, string input)
     {
-        testPath = Directory.GetCurrentDirectory() + "\\tests" + testPath;
-        resultPath = Directory.GetCurrentDirectory() + "\\tests" + resultPath;
-        logging = Directory.GetCurrentDirectory() + "\\tests" + logging;
-        input = Directory.GetCurrentDirectory() + "\\tests" + input;
+        testPath = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\tests" + testPath;
+        resultPath = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\tests" + resultPath;
+        logging = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\tests" + logging;
+        input = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\tests" + input;
         File.WriteAllText(logging, string.Empty);
 
         Log.Logger = new LoggerConfiguration()
