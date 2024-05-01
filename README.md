@@ -117,35 +117,35 @@ forth | stack | neum | **mc** -> hw | instr | **binary** -> struct | stream | po
 
 Все микрокомманды:
 ```
-snap stack pointer1     11000000010010
-snap stack1		        10100000010010
-snap stack pointer2	    11000000010100
-snap stack2		        10100000010100
-snap memory		        10010000010000
-snap tos1		        10001000010010
-snap tos2		        10001000010100
-snap alu		        10000100010000
-snap io input		    10000010010000
-snap io output		    10000010001000
-snap command pointer	10000001010000
-snap flags		        10000000110000
-snap null		        10000000010000
-reload stack pointer1	11000000001010
-reload stack1		    10100000001010
-reload stack pointer2	11000000001100
-reload stack2		    10100000001100
-reload memory		    10010000001000
-reload read memory      10010000001001
-reload tos1		        10001000001010
-reload tos2		        10001000001100
-reload command pointer	10000001001000
-add 			        01000000110000
-inc 			        00100000110000
-and 			        00010000110000
-or 			            00001000110000
-less			        00000100011011
-subtract 			    00000010110110
-dec 			        00000001110110
+11000000010010 - snap stack pointer1
+10100000010010 - snap stack1		        
+11000000010100 - snap stack pointer2	    
+10100000010100 - snap stack2		        
+10010000010000 - snap memory		        
+10001000010010 - snap tos1		        
+10001000010100 - snap tos2		        
+10000100010000 - snap alu		        
+10000010010000 - snap io input		    
+10000010001000 - snap io output		    
+10000001010000 - snap command pointer	
+10000000110000 - snap flags		        
+10000000010000 - snap null		        
+11000000001010 - reload stack pointer1	
+10100000001010 - reload stack1		    
+11000000001100 - reload stack pointer2	
+10100000001100 - reload stack2		    
+10010000001000 - reload memory		    
+10010000001001 - reload read memory      
+10001000001010 - reload tos1		        
+10001000001100 - reload tos2		        
+10000001001000 - reload command pointer	
+01000000110000 - add 			        
+00100000110000 - inc 			        
+00010000110000 - and 			        
+00001000110000 - or 			            
+00000100011011 - less			        
+00000010110110 - subtract 			    
+00000001110110 - dec 			        
 ```
 
 **Микрокоманда строится по шаблону:**
