@@ -263,12 +263,7 @@ args:
 - Флаги: (negative, zero, less)
 - Наличие флага less означает, что на вершине стека находится меньшее значение, чем на второй позиции от вершины. 
 
-![DataPath](https://sun9-16.userapi.com/impg/k2Xg1xtd-lv66p5ZPp3vYNUSv02eHZLDvH3CBw/55jtOJczWR4.jpg?size=1111x1514&quality=96&sign=a0e748f7a004dca91963004531ca3bcf&type=album)
-
-Только с сигнальными линиями:
-
-![DataPathSignal](https://sun9-24.userapi.com/impg/yGr48wvkl8Zd-SQi1aWQQRFaEb6evw_XKB9u4w/Q8nltW2axjQ.jpg?size=930x1475&quality=96&sign=3065cf0b4e7a9ca15bbd7a7e6ff81d8e&type=album)
-
+![DataPath](https://sun9-57.userapi.com/impg/V1a8OQC_YvaXiNE_F6P3gvxtMJth40LM5yeRgg/sAA8Dgjuxx4.jpg?size=936x1312&quality=96&sign=c6cfb51fec1e74d45c0e11f3790d64d8&type=album)
 
 
 ControlUnit
@@ -276,7 +271,7 @@ ControlUnit
 - Реализован в классе [ControlUnit.cs](ControlUnit.cs)
 - Обрабатывает флаги, полученные от DataPath
 
-![ControlUnit](https://sun9-45.userapi.com/impg/19-gKYKJB5Egd5vg9YJz3EM1BhF9ckve29xYAg/oPZuYltJqXc.jpg?size=848x836&quality=96&sign=298467a74afa461afb71d31fea70f85a&type=album)
+![ControlUnit](https://sun9-26.userapi.com/impg/aDcpmPfYqp-_OUmXCoJx98DpkNCQW09MWKNRxw/A9nFj1dyU6o.jpg?size=775x751&quality=96&sign=24e21d764f353cb9c793cfaceb0877eb&type=album)
 
 **Особенности модели**
 - При встрече инструкции, она тут же выполняется
