@@ -143,7 +143,7 @@ public class ControlUnit
         for (int instrIndex = 0; instrIndex < forthProgramm.Length; instrIndex++)
         {
             string instruction = forthProgramm[instrIndex];
-            if (instruction.Contains('\"') && instruction.Substring(0, 1) == "\"")
+            if (instruction.Contains('\"') && (instruction.Substring(0, 1) == "\"" && !instruction.EndsWith("\"") || instruction == "\""))
             {
                 rememberLine += instruction + " ";
                 instrIndex++;

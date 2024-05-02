@@ -75,17 +75,19 @@ public class Test
             .CreateLogger();
         Log.Information("Imitation started");
 
+        string outputFile = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\tests" + "\\output.txt";
+        string microcodeFile = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\microcode.txt";
+
         Memory memory = new Memory();
-        DataPath dataPath = new DataPath(memory, input, "\\output.txt");
-        ControlUnit controlUnit = new ControlUnit(testPath,
-                                                "D:\\ITMO\\2_year\\csa\\ForthImitation\\microcode.txt", dataPath);
+        DataPath dataPath = new DataPath(memory, input, outputFile);
+        ControlUnit controlUnit = new ControlUnit(testPath, microcodeFile, dataPath);
 
         controlUnit.Work();
 
         dataPath.OutputFile.Close();
         Log.CloseAndFlush();
 
-        string testResult = File.ReadAllText("D:\\ITMO\\2_year\\csa\\ForthImitation\\tests\\output.txt");
+        string testResult = File.ReadAllText(outputFile);
         string resultNeeded = File.ReadAllText(resultPath);
 
         if (testResult != resultNeeded)
