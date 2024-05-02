@@ -514,9 +514,11 @@ Logging: [logging.log](logging.log)
 
 ## End
 ```
-| Сафонова Ольга Данииловна | Hello User | 25 | 13384 bit | 956 | 70 | 1833 | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| ФИО                       | prog       | line count | prog size      | microinstr count | instr count | tick count | variant
 
-| Сафонова Ольга Данииловна | cat | 6 | 1199954 bit | 85711 | 8292 | 196271 | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | Hello User | 1          | 63672 bit      | 4548             | 336         | 8801       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | fibonacci | 13 | 18592 bit | 1328 | 95 | 2507 | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | cat        | 1          | 1356628 bit    | 96902            | 9375        | 221903     | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+
+| Сафонова Ольга Данииловна | fibonacci  | 1          | 18592 bit      | 1328             | 96          | 2520       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 ```
