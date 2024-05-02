@@ -2,11 +2,11 @@
 Сафонова Ольга Данииловна, P3207, 368764
 
 Вариант :
-forth | stack | neum | **mc** -> hw | instr | **binary** -> struct | stream | port | pstr | prob2 | ~~cache~~ 
+forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | stream | port | pstr | prob2 | ~~cache~~ 
 
 Без усложнения
 
-# Fort
+# Forth
 Используется стековая архитектура, поэтому все операции выполняются с учётом стека.
 
 ```<number>```    - push contsnt to stack
@@ -38,18 +38,9 @@ forth | stack | neum | **mc** -> hw | instr | **binary** -> struct | stream | po
 
 ---
 
-```<values>``` <br>
-```if``` <br>
-```<commands>```<br>
-```else ```<br>
-```<commands>```<br>
-```then```        - check if there is 'true' (positive number) on top of the stack; jump to else if negative or do program
+```<commands> if <commands> else <commands> then``` - check if there is 'true' (positive number) on top of the stack; jump to else setion if negative or do if section; after all, jump to then
 
-```<max value>```<br>
-```<start value>```<br>
-```do```          - start looping and do it according to 'if' principle; saves looping values in buffer stack
-```<commands>```<br>
-```loop```        - increment top of the buffer stack and jump to next command after 'do' or end looping; working according to 'if' principle     
+```<max value> <start value> do <commands> loop```          - ```do```: start looping; saves looping values in buffer stack; ```loop```: increment top of the buffer stack and check if buffer tos is less than second value: jump to next command after 'do' or end looping;
 
 ```variable```     - returns the index of free space of memory
 
@@ -66,7 +57,7 @@ forth | stack | neum | **mc** -> hw | instr | **binary** -> struct | stream | po
 
 - Код выполняется последовательно с возможностью ветвления и циклов
 - Комментарии не поддерживаются
-- Присутствует поддержка числовых целочисленных литералов от -2^32 до 2^32-1
+- Присутствует поддержка числовых целочисленных литералов от 0 до 2^32-1
 
 ## Память
 - Выделяется статически, при запуске модели
@@ -162,14 +153,20 @@ forth | stack | neum | **mc** -> hw | instr | **binary** -> struct | stream | po
 8. flags
 9. for io: input; for other: snap
 10. for io: output; for other: reload
-11. main stack
-12. buffer stack
+11. buffer stack
+12. main stack
 13. special bit for reloading memory in only read format
+
+1 | stack pointer | stack | memory | TOS | ALU | IO | 0 | flags | input/snap | output/reload | buffer | main | only read
+
+Пример:<br>
+11000000010010 <br>
+1 | stack pointer | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | snap | 0 | 0 | main | 0
 
 Для операционной (нулевой бит - 0) (позиция в списке - номер бита):
 
 1. add
-2. incriment
+2. increment
 3. and
 4. or
 5. less
@@ -181,6 +178,12 @@ forth | stack | neum | **mc** -> hw | instr | **binary** -> struct | stream | po
 11. 0
 12. 0
 13. 0
+
+0 | add | increment | and | or | less | substract | decrement | negative flag | zero flag | less flag | 0 | 0 | 0
+
+Пример: <br>
+01000000110000 - add <br>
+0 | add | 0 | 0 | 0 | 0 | 0 | 0 | negative flag | zero flag | 0 | 0 | 0 | 0
 
 Каждая инструкция транслируется в набор микрокоманд с помощью [листинга микропрограмм](microcode.txt).
 
