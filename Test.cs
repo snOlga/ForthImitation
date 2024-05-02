@@ -35,18 +35,18 @@ public class Test
                 "\\results\\result_rot.txt",
                 "\\logs\\rot.log",
                 "\\inputs\\input.txt")]
-    // [TestCase("\\test_simple_procedure.txt",
-    //             "\\results\\result_simple_procedure.txt",
-    //             "\\logs\\simple_procedure.log",
-    //             "\\inputs\\input.txt")]
+    [TestCase("\\test_simple_procedure.txt",
+                "\\results\\result_simple_procedure.txt",
+                "\\logs\\simple_procedure.log",
+                "\\inputs\\input.txt")]
     [TestCase("\\test_fibonacci.txt",
                 "\\results\\result_fibonacci.txt",
                 "\\logs\\fibonacci.log",
                 "\\inputs\\input.txt")]
-    // [TestCase("\\test_fibonacci_procedure.txt",
-    //             "\\results\\result_fibonacci_procedure.txt",
-    //             "\\logs\\fibonacci_procedure.log",
-    //             "\\inputs\\input.txt")]
+    [TestCase("\\test_fibonacci_procedure.txt",
+                "\\results\\result_fibonacci_procedure.txt",
+                "\\logs\\fibonacci_procedure.log",
+                "\\inputs\\input.txt")]
     [TestCase("\\test_hello_world.txt",
                 "\\results\\result_hello_world.txt",
                 "\\logs\\hello_world.log",

@@ -160,8 +160,17 @@ public class ControlUnit
             }
             if (instruction == ":")
             {
+                instrIndex++;
+                string procedureName = forthProgramm[instrIndex];
+                List<string> procedure = new List<string>();
+                instrIndex++;
+                while (forthProgramm[instrIndex] != ";")
+                {
+                    procedure.Add(forthProgramm[instrIndex]);
+                    instrIndex++;
+                }
                 string[] initProcedure = instruction.Split(" ");
-                namedProcedures.Add(initProcedure[1], initProcedure[2..(initProcedure.Length - 1)]);
+                namedProcedures.Add(procedureName, procedure.ToArray());
                 indexForLoading--;
             }
             else if (namedProcedures.ContainsKey(instruction))
