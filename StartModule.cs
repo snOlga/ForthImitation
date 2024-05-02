@@ -34,5 +34,5 @@ dataPath.OutputFile.Close();
 Log.CloseAndFlush();
 
 Console.WriteLine("Tick count: " + DataPath.TickCounter);
-Console.WriteLine(ControlUnit.GetMetaData());
+Console.WriteLine(controlUnit.GetMetaData());
 

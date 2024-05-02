@@ -157,8 +157,6 @@ public class DataPath
             if (IODataBeforeSnap == "\uFFFF")
             {
                 Log.Error("Null input");
-                Console.WriteLine("Tick count: " + DataPath.TickCounter);
-                Console.WriteLine(ControlUnit.GetMetaData());
                 throw new NullReferenceException("Null from input!");
             }
         }

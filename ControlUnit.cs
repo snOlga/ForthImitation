@@ -5,7 +5,6 @@ public class ControlUnit
     private const int startProgrammIndex = 0;
     private const int indexForConst = 500;
     private int indexForVariable = 100;
-    public static int constIndexForVariable = 100;
     private Decoder decoder;
     private (bool neg, bool zero, bool less) flags = (false, false, false);
     private int howManyPushConst = 0;
@@ -15,7 +14,7 @@ public class ControlUnit
     private static int microCount = 0;
     private static int programSize = 0;
     private static int instructionCount = 0;
-    public static string GetMetaData()
+    public string GetMetaData()
     {
         return $"Microcommands count: {microCount} | Program size in bit: {programSize} | Instruction count: {instructionCount}";
     }
@@ -169,7 +168,6 @@ public class ControlUnit
                     procedure.Add(forthProgramm[instrIndex]);
                     instrIndex++;
                 }
-                string[] initProcedure = instruction.Split(" ");
                 namedProcedures.Add(procedureName, procedure.ToArray());
                 indexForLoading--;
             }

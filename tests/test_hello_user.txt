@@ -1,1 +1,1 @@
-" ,olleH" 0 do . loop variable 4 0 do key swap ! 1 + loop 4 - 4 0 do ? . 1 + loop 
+"What's your name?" variable swap 0 do ! swap drop 1 + loop 1 - 17 0 do ? . 1 - loop " ,olleH" variable swap 0 do ! swap drop 1 + loop 4 0 do key swap ! 1 + loop 7 4 + - 7 4 + 0 do ? . 1 + loop 
