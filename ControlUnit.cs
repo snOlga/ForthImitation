@@ -1,15 +1,16 @@
 public class ControlUnit
 {
-    Memory mainMemory;
-    DataPath dataPath;
+    private readonly Memory mainMemory;
+    private readonly DataPath dataPath;
     private const int startProgrammIndex = 0;
     private const int indexForConst = 500;
     private int indexForVariable = 100;
-    private Decoder decoder;
+    private readonly Decoder decoder;
     private (bool neg, bool zero, bool less) flags = (false, false, false);
     private int howManyPushConst = 0;
     private bool isPushedFromMemory = false;
     private int bufferOffset = 0;
+    private readonly Dictionary<string, string[]> namedProcedures = new Dictionary<string, string[]>();
     #region metadata
     private static int microCount = 0;
     private static int programSize = 0;
@@ -126,7 +127,6 @@ public class ControlUnit
             return (microProgramm.ToArray(), loadType);
         }
     }
-    private Dictionary<string, string[]> namedProcedures = new Dictionary<string, string[]>();
     public ControlUnit(string fileNameMainProg, string fileNameCM, DataPath actualDataPath)
     {
         dataPath = actualDataPath;
