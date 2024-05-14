@@ -8,7 +8,7 @@ public class Memory
     private int pointer = 0;
     public void LoadToMemory(int index, string data)
     {
-        DataPath.TickCounter++;
+        DataPath.TickCounter += 2;
         mainMemory[index] = data;
         Log.Information($"{data} loaded to memory at {index}");
     }
