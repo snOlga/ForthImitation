@@ -1,120 +1,142 @@
-io out:
+io output
 10001000001010      reload tos1
 10000010001000      snap io output
 
-io input:
+io input
 10000010010000      snap io input
 10001000010010      snap tos1
 
-2nd to tos1:
+2nd to tos1
 10100000001010      reload stack1
 10001000010010      snap tos1
 
-dec sp1:
+dec sp1
 11000000001010      reload stack pointer1
 10000000010000      snap null
 10000100010000      snap alu
 00000001110110      dec
 11000000010010      snap stack pointer1
 
-inc sp1:
+inc sp1
 11000000001010      reload stack pointer1
 10000000010000      snap null
 10000100010000      snap alu
 00100000110000      inc
 11000000010010      snap stack pointer1
 
-inc sp2:
+inc sp2
 11000000001100      reload stack pointer2
 10000000010000      snal null
 10000100010000      snap alu
 00100000110000      inc
 11000000010100      snap stack pointer2
 
-dec sp2:
+dec sp2
 11000000001100      reload stack pointer2
 10000000010000      snal null
 10000100010000      snap alu
 00000001110110      dec
 11000000010100      snap stack pointer2
 
-reload main:
+reload main
 10100000001010      reload stack1
 10001000001010      reload tos1
 
-reload null:
+reload null
 10000000010000      snap null
 
-reload buffer:
+reload buffer
 10100000001100      reload stack2
 10001000001100      reload tos2
 
-do add:
+do add
 10000100010000      snap alu
 01000000110000      add
 10000000110000      snap flags
 
-do substract:
+do substract
 10000100010000      snap alu
 00000010110110      substract
 10000000110000      snap flags
 
-do and:
+do and
 10000100010000      snap alu
 00010000110000      and
 10000000110000      snap flags
 
-do and:
+do or
 10000100010000      snap alu
 00001000110000      or
 10000000110000      snap flags
 
-do less:
+do less
 10000100010000      snap alu
 00000100011011      less
 10000000110000      snap flags
 
-tos1 to 2nd:
+tos1 to 2nd
 10001000001010      reload tos1
 10100000010010      snap stack1
 
-to tos1:
-10001000001010      snap tos1
+to tos1
+10001000010010      snap tos1
 
-stack1 to stack2:
+to tos2
+10100000010100      snap tos2
+
+stack1 to stack2
 10100000001010      reload stack1
 10100000010100      snap stack2
 
-tos1 to tos2:
+tos1 to tos2
 10001000001010      reload tos1
 10001000010100      snap tos2
 
-inc i:
+tos2 to tos1
+10001000001100      reload tos2
+10001000010010      snap tos1
+
+inc i
 10001000001100      reload tos2
 10000000010000      snap null
 10000100010000      snap alu
 00100000110000      inc
 10001000010100      snap tos2
 
-tos2 to 2nd:
+tos2 to 2nd
 10001000001100      reload tos2
 10100000010100      snap stack2
 
-stack2 to stack1:
+stack2 to stack1
 10100000001100      reload stack2
 10100000010010      snap stack1
 
-2nd to tos2:
+2nd to tos2
 10100000001100      reload stack2
 10001000001100      snap tos2
 
-r mem to tos1:
+r mem to tos1
 10010000001001      reload read memory
 10001000010010      snap tos1
 
-to mem:
+to mem
 10010000010000      snap memory
 
-mem to tos1:
+mem to tos1
 10010000001000      reload memory
 10001000010010      snap tos1
+
+---for control unit---
+jump else
+
+jump then
+
+jump loop
+
+jump for
+
+save address
+
+check true
+
+check false

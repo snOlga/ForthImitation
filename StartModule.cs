@@ -26,7 +26,7 @@ Log.Logger = new LoggerConfiguration()
 Log.Information("Imitation started");
 Memory memory = new Memory();
 DataPath dataPath = new DataPath(memory, inputFile, outputFile);
-ControlUnit controlUnit = new ControlUnit(mainProg, microcode, dataPath);
+ControlUnit controlUnit = new ControlUnit(mainProg, microcode, dataPath, "D:\\ITMO\\2_year\\csa\\ForthImitation\\mnemonic_description.txt");
 
 controlUnit.Work();
 

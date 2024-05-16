@@ -10,6 +10,7 @@ public class ControlUnit
     private int howManyPushConst = 0;
     private bool isPushedFromMemory = false;
     private int bufferOffset = 0;
+    private Dictionary<string, string[]> mnemonicAndMicrocode = new Dictionary<string, string[]>();
     private readonly Dictionary<string, string[]> namedProcedures = new Dictionary<string, string[]>();
     #region metadata
     private static int microCount = 0;
@@ -22,11 +23,11 @@ public class ControlUnit
     #endregion
     private class Decoder
     {
-        private string[] microcommands;
+        private string[] mnemonics;
         private string dataToMemory = "";
         public Decoder(string fileName)
         {
-            microcommands = File.ReadAllLines(fileName);
+            mnemonics = File.ReadAllLines(fileName);
         }
         public string DataToMemory
         {
@@ -35,7 +36,7 @@ public class ControlUnit
         public (string[] microCode, LoadTypes loadType) DecodeInstruction(string name)
         {
             LoadTypes loadType = LoadTypes.Nothing;
-            List<string> microProgramm = new List<string>();
+            List<string> mnemonicProgramm = new List<string>();
             dataToMemory = "";
 
             if (int.TryParse(name, out int nevermind))
@@ -53,81 +54,68 @@ public class ControlUnit
             }
             if (loadType != LoadTypes.Nothing)
             {
-                microProgramm.AddRange(microcommands[11..18]);
-                microProgramm.AddRange(microcommands[21..23]);
+                mnemonicProgramm.AddRange(mnemonics[15..18]);
             }
 
             switch (name)
             {
                 case ".":
-                    microProgramm.AddRange(microcommands[0..10]);
+                    mnemonicProgramm.AddRange(mnemonics[1..4]);
                     break;
                 case "key":
-                    microProgramm.AddRange(microcommands[11..20]);
+                    mnemonicProgramm.AddRange(mnemonics[10..13]);
                     break;
                 case "drop":
-                    microProgramm.AddRange(microcommands[2..10]);
+                    mnemonicProgramm.AddRange(mnemonics[6..8]);
                     break;
                 case "dup":
-                    microProgramm.AddRange(microcommands[11..18]);
-                    microProgramm.Add(microcommands[22]);
+                    mnemonicProgramm.AddRange(mnemonics[20..22]);
                     break;
                 case "rot":
-                    microProgramm.AddRange(microcommands[130..171]);
+                    mnemonicProgramm.AddRange(mnemonics[112..124]);
                     break;
                 case "+":
-                    microProgramm.AddRange(microcommands[24..27]);
-                    microProgramm.Add(microcommands[27]);
-                    microProgramm.AddRange(microcommands[32..39]);
+                    mnemonicProgramm.AddRange(mnemonics[30..34]);
                     break;
                 case "and":
-                    microProgramm.AddRange(microcommands[24..27]);
-                    microProgramm.Add(microcommands[28]);
-                    microProgramm.AddRange(microcommands[32..39]);
+                    mnemonicProgramm.AddRange(mnemonics[42..46]);
                     break;
                 case "or":
-                    microProgramm.AddRange(microcommands[24..27]);
-                    microProgramm.Add(microcommands[29]);
-                    microProgramm.AddRange(microcommands[32..39]);
+                    mnemonicProgramm.AddRange(mnemonics[48..52]);
                     break;
                 case "<":
-                    microProgramm.AddRange(microcommands[24..27]);
-                    microProgramm.Add(microcommands[30]);
-                    microProgramm.AddRange(microcommands[32..39]);
+                    mnemonicProgramm.AddRange(mnemonics[24..28]);
                     break;
                 case "-":
-                    microProgramm.AddRange(microcommands[24..27]);
-                    microProgramm.Add(microcommands[31]);
-                    microProgramm.AddRange(microcommands[32..39]);
+                    mnemonicProgramm.AddRange(mnemonics[36..40]);
                     break;
                 case "if":
-                    microProgramm.AddRange(microcommands[40..45]);
+                    mnemonicProgramm.AddRange(mnemonics[54..59]);
+                    break;
+                case "else":
+                    mnemonicProgramm.AddRange(mnemonics[61..66]);
                     break;
                 case "do":
-                    microProgramm.AddRange(microcommands[46..55]);
-                    microProgramm.AddRange(microcommands[2..10]);
-                    microProgramm.AddRange(microcommands[2..10]);
-                    microProgramm.AddRange(microcommands[56..63]);
+                    mnemonicProgramm.AddRange(mnemonics[68..80]);
                     break;
                 case "loop":
-                    microProgramm.AddRange(microcommands[64..69]);
-                    microProgramm.AddRange(microcommands[56..63]);
+                    mnemonicProgramm.AddRange(mnemonics[82..87]);
                     break;
                 case "swap":
-                    microProgramm.AddRange(microcommands[75..119]);
+                    mnemonicProgramm.AddRange(mnemonics[93..104]);
                     break;
                 case "!":
-                    microProgramm.AddRange(microcommands[70..74]);
+                    mnemonicProgramm.AddRange(mnemonics[89..91]);
                     break;
                 case "?":
-                    microProgramm.AddRange(microcommands[120..129]);
+                    mnemonicProgramm.AddRange(mnemonics[107..110]);
                     break;
             }
 
-            return (microProgramm.ToArray(), loadType);
+            return (mnemonicProgramm.ToArray(), loadType);
         }
     }
-    public ControlUnit(string fileNameMainProg, string fileNameCM, DataPath actualDataPath)
+    public ControlUnit(string fileNameMainProg, string fileNameCM, DataPath actualDataPath, string fileNameMnemonicDescription)
     {
         dataPath = actualDataPath;
         mainMemory = dataPath.MainMemory;
@@ -139,6 +127,7 @@ public class ControlUnit
 
         string rememberLine = "";
 
+        //prog to memory
         for (int instrIndex = 0; instrIndex < forthProgramm.Length; instrIndex++)
         {
             string instruction = forthProgramm[instrIndex];
@@ -190,19 +179,42 @@ public class ControlUnit
         }
         mainMemory.LoadToMemory(indexForLoading, "_"); //null pointer
         decoder = new Decoder(fileNameCM);
+
+        //fill dict of microcode
+        string[] mnemonicDescription = File.ReadAllLines(fileNameMnemonicDescription);
+
+        string currentMnemonic = "";
+        List<string> microcode = new List<string>();
+        foreach(string mnemonic in mnemonicDescription)
+        {
+            if(mnemonic.StartsWith("1") || mnemonic.StartsWith("0"))
+            {
+                string code = mnemonic.Split(' ')[0];
+                microcode.Add(code);
+            }
+            else if(mnemonic != "")
+            {
+                if(currentMnemonic != "")
+                {
+                    mnemonicAndMicrocode.Add(currentMnemonic, microcode.ToArray());
+                }
+                currentMnemonic = mnemonic;
+                microcode.Clear();
+            }
+        }
     }
     public void Work()
     {
         int currentPointer = startProgrammIndex;
         while (mainMemory.GetData(currentPointer) != "_")
         {
-            (string[] microCode, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
+            (string[] mnemonicProg, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
 
-            Preprocessing(decodeResult);
+            string[] microCode = Preprocessing(decodeResult);
 
             try
             {
-                ExecuteMicroProgramm(decodeResult.microCode);
+                ExecuteMicroProgramm(microCode);
             }
             catch (System.NullReferenceException)
             {
@@ -215,12 +227,24 @@ public class ControlUnit
             instructionCount++;
         }
     }
-    private void Preprocessing((string[] microCode, LoadTypes loadType) decodeResult)
+    private string[] Preprocessing((string[] mnemonicProg, LoadTypes loadType) decodeResult)
     {
         if (decodeResult.loadType != LoadTypes.Nothing)
         {
             LoadConsts(decoder.DataToMemory, decodeResult.loadType);
         }
+
+        List<string> microProg = new List<string>();
+
+        foreach (string mnemonic in decodeResult.mnemonicProg)
+        {
+            foreach (var microcommand in mnemonicAndMicrocode[mnemonic])
+            {
+                microProg.Add(microcommand);
+            }
+        }
+
+        return microProg.ToArray();
     }
     private int Postprocessing(Memory mainMemory, int currentPointer)
     {

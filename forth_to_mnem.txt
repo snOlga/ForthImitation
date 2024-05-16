@@ -1,0 +1,124 @@
+.
+io output
+2nd to tos1
+dec sp1
+
+drop
+2nd to tos1
+dec sp1
+
+key
+inc sp1
+tos1 to 2nd
+io input
+
+push
+inc sp1
+tos1 to 2nd
+mem to tos1
+
+dup
+inc sp1
+tos1 to 2nd
+
+<
+reload main
+do less
+to tos1
+dec sp1
+
++
+reload main
+do add
+to tos1
+dec sp1
+
+-
+reload main
+do substract
+to tos1
+dec sp1
+
+and
+reload main
+do and
+to tos1
+dec sp1
+
+or
+reload main
+do or
+to tos1
+dec sp1
+
+if
+reload main
+reload null
+do or
+check true
+jump else
+
+else
+reload main
+reload null
+do or
+check false
+jump then
+
+do
+save address
+inc sp2
+stack1 to stack2
+tos1 to tos2
+2nd to tos1
+dec sp1
+2nd to tos1
+dec sp1
+reload buffer
+do less
+check true
+jump loop
+
+loop
+inc i
+reload buffer
+do less
+check false
+jump for
+
+!
+reload main
+to mem
+
+swap
+inc sp2
+tos2 to 2nd
+tos1 to tos2
+inc sp2
+stack1 to stack2
+to tos2
+tos2 to tos1
+dec sp2
+stack2 to stack1
+dec sp2
+2nd to tos2
+
+
+?
+inc sp1
+tos1 to 2nd
+r mem to tos1
+
+rot
+inc sp2
+tos2 to 2nd
+inc sp2
+dec sp1
+stack1 to stack2
+to tos2
+tos1 to 2nd
+tos2 to tos1
+inc sp1
+dec sp2
+2nd to tos2
+dec sp2
