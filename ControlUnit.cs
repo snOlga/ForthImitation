@@ -12,6 +12,8 @@ public class ControlUnit
     private int bufferOffset = 0;
     private Dictionary<string, string[]> mnemonicAndMicrocode = new Dictionary<string, string[]>();
     private readonly Dictionary<string, string[]> namedProcedures = new Dictionary<string, string[]>();
+    private JumpSignal jumpSignal = JumpSignal.Nothing;
+    private CheckSignal checkSignal = CheckSignal.Nothing;
     #region metadata
     private static int microCount = 0;
     private static int programSize = 0;
@@ -185,16 +187,16 @@ public class ControlUnit
 
         string currentMnemonic = "";
         List<string> microcode = new List<string>();
-        foreach(string mnemonic in mnemonicDescription)
+        foreach (string mnemonic in mnemonicDescription)
         {
-            if(mnemonic.StartsWith("1") || mnemonic.StartsWith("0"))
+            if (mnemonic.StartsWith("1") || mnemonic.StartsWith("0"))
             {
                 string code = mnemonic.Split(' ')[0];
                 microcode.Add(code);
             }
-            else if(mnemonic != "")
+            else if (mnemonic != "")
             {
-                if(currentMnemonic != "")
+                if (currentMnemonic != "")
                 {
                     mnemonicAndMicrocode.Add(currentMnemonic, microcode.ToArray());
                 }
@@ -221,7 +223,7 @@ public class ControlUnit
                 return;
             }
 
-            currentPointer = Postprocessing(mainMemory, currentPointer);
+            currentPointer = Postprocessing(currentPointer);
 
             currentPointer++;
             instructionCount++;
@@ -238,48 +240,66 @@ public class ControlUnit
 
         foreach (string mnemonic in decodeResult.mnemonicProg)
         {
-            foreach (var microcommand in mnemonicAndMicrocode[mnemonic])
+            if (mnemonic.Contains("jump do"))
+                jumpSignal = JumpSignal.Do;
+            else if (mnemonic.Contains("jump loop"))
+                jumpSignal = JumpSignal.Loop;
+            else if (mnemonic.Contains("jump else"))
+                jumpSignal = JumpSignal.Else;
+            else if (mnemonic.Contains("jump then"))
+                jumpSignal = JumpSignal.Then;
+            else if (mnemonic.Contains("check true"))
+                checkSignal = CheckSignal.True;
+            else if (mnemonic.Contains("check false"))
+                checkSignal = CheckSignal.False;
+            else
             {
-                microProg.Add(microcommand);
+                foreach (var microcommand in mnemonicAndMicrocode[mnemonic])
+                {
+                    microProg.Add(microcommand);
+                }
             }
         }
 
         return microProg.ToArray();
     }
-    private int Postprocessing(Memory mainMemory, int currentPointer)
+    private int Postprocessing(int currentPointer)
     {
-        //jumping here
-        if (mainMemory.GetData(currentPointer) == "else")
+        bool needToJump = false;
+        if (checkSignal == CheckSignal.True)
+            needToJump = flags.zero;
+        else if (checkSignal == CheckSignal.False)
+            needToJump = !flags.zero;
+
+        if (!needToJump)
+        {
+            checkSignal = CheckSignal.Nothing;
+            jumpSignal = JumpSignal.Nothing;
+            return currentPointer;
+        }
+
+        if (jumpSignal == JumpSignal.Else)
+        {
+            while (mainMemory.GetData(currentPointer) != "else")
+                currentPointer++;
+        }
+        else if (jumpSignal == JumpSignal.Then)
         {
             while (mainMemory.GetData(currentPointer) != "then")
-            {
                 currentPointer++;
-            }
         }
-        if (mainMemory.GetData(currentPointer) == "if")
+        else if (jumpSignal == JumpSignal.Loop)
         {
-            if (flags.zero)
-            {
-                while (mainMemory.GetData(currentPointer) != "else")
-                {
-                    currentPointer++;
-                }
-            }
+            while (mainMemory.GetData(currentPointer) != "loop")
+                currentPointer++;
         }
-        if (mainMemory.GetData(currentPointer) == "loop")
-        {
-            if (flags.less)
-            {
-                while (mainMemory.GetData(currentPointer) != "do")
-                {
-                    currentPointer--;
-                }
-            }
-        }
+        
         if (mainMemory.GetData(currentPointer) == "!")
         {
             indexForVariable++;
         }
+        checkSignal = CheckSignal.Nothing;
+        jumpSignal = JumpSignal.Nothing;
         return currentPointer;
     }
     private void LoadConsts(string constant, LoadTypes loadType)
@@ -475,4 +495,18 @@ public enum MathOperation
     Inc,
     Dec,
     Less
+}
+public enum JumpSignal
+{
+    Else,
+    Then,
+    Loop,
+    Do,
+    Nothing
+}
+public enum CheckSignal
+{
+    True,
+    False,
+    Nothing
 }

@@ -133,7 +133,7 @@ jump then
 
 jump loop
 
-jump for
+jump do
 
 save address
 
