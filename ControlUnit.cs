@@ -72,7 +72,7 @@ public class ControlUnit
                     mnemonicProgramm.AddRange(mnemonics[20..22]);
                     break;
                 case "rot":
-                    mnemonicProgramm.AddRange(mnemonics[112..124]);
+                    mnemonicProgramm.AddRange(mnemonics[114..126]);
                     break;
                 case "+":
                     mnemonicProgramm.AddRange(mnemonics[30..34]);
@@ -102,13 +102,13 @@ public class ControlUnit
                     mnemonicProgramm.AddRange(mnemonics[82..87]);
                     break;
                 case "swap":
-                    mnemonicProgramm.AddRange(mnemonics[93..104]);
+                    mnemonicProgramm.AddRange(mnemonics[93..107]);
                     break;
                 case "!":
                     mnemonicProgramm.AddRange(mnemonics[89..91]);
                     break;
                 case "?":
-                    mnemonicProgramm.AddRange(mnemonics[107..110]);
+                    mnemonicProgramm.AddRange(mnemonics[109..112]);
                     break;
             }
 

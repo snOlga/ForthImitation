@@ -95,6 +95,8 @@ inc sp2
 tos2 to 2nd
 tos1 to tos2
 inc sp2
+tos2 to 2nd
+inc sp2
 stack1 to stack2
 to tos2
 tos2 to tos1
@@ -102,7 +104,7 @@ dec sp2
 stack2 to stack1
 dec sp2
 2nd to tos2
-
+dec sp2
 
 ?
 inc sp1

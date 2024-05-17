@@ -26,14 +26,14 @@ inc sp1
 
 inc sp2
 11000000001100      reload stack pointer2
-10000000010000      snal null
+10000000010000      snap null
 10000100010000      snap alu
 00100000110000      inc
 11000000010100      snap stack pointer2
 
 dec sp2
 11000000001100      reload stack pointer2
-10000000010000      snal null
+10000000010000      snap null
 10000100010000      snap alu
 00000001110110      dec
 11000000010100      snap stack pointer2
@@ -82,7 +82,7 @@ to tos1
 10001000010010      snap tos1
 
 to tos2
-10100000010100      snap tos2
+10001000010100      snap tos2
 
 stack1 to stack2
 10100000001010      reload stack1
@@ -113,7 +113,7 @@ stack2 to stack1
 
 2nd to tos2
 10100000001100      reload stack2
-10001000001100      snap tos2
+10001000010100      snap tos2
 
 r mem to tos1
 10010000001001      reload read memory
