@@ -1,167 +1,167 @@
-[17:40:50.456 [Information] Imitation started
-[17:40:50.490 [Information] 1 loaded to memory at 0
-[17:40:50.490 [Information] 2 loaded to memory at 1
-[17:40:50.490 [Information] 3 loaded to memory at 2
-[17:40:50.490 [Information] + loaded to memory at 3
-[17:40:50.490 [Information] 2 loaded to memory at 4
-[17:40:50.490 [Information] + loaded to memory at 5
-[17:40:50.490 [Information] + loaded to memory at 6
-[17:40:50.490 [Information] . loaded to memory at 7
-[17:40:50.490 [Information]  loaded to memory at 8
-[17:40:50.490 [Information] _ loaded to memory at 9
-[17:40:50.497 [Information] Reload main pointer -1
-[17:40:50.498 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.498 [Information] Snapped null
-[17:40:50.498 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.499 [Information] Snapped alu (0, -1)
-[17:40:50.499 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.504 [Information] Alu operation: Inc
-[17:40:50.504 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.504 [Information] Snapped main pointer 0
-[17:40:50.504 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.505 [Information] Reload main TOS 0
-[17:40:50.505 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.505 [Information] Snapped main stack 0
-[17:40:50.505 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.506 [Information] Reload memory 1
-[17:40:50.506 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.506 [Information] Snapped main TOS 1
-[17:40:50.506 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.506 [Information] Reload main pointer 0
-[17:40:50.506 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped null
-[17:40:50.507 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped alu (0, 0)
-[17:40:50.507 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Alu operation: Inc
-[17:40:50.507 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped main pointer 1
-[17:40:50.507 [Warning] Main stack pointer: 1 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Reload main TOS 1
-[17:40:50.507 [Warning] Main stack pointer: 1 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped main stack 1
-[17:40:50.507 [Warning] Main stack pointer: 1 | Main TOS: 1 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Reload memory 2
-[17:40:50.507 [Warning] Main stack pointer: 1 | Main TOS: 1 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped main TOS 2
-[17:40:50.507 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Reload main pointer 1
-[17:40:50.507 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped null
-[17:40:50.507 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped alu (0, 1)
-[17:40:50.507 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Alu operation: Inc
-[17:40:50.507 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped main pointer 2
-[17:40:50.507 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Reload main TOS 2
-[17:40:50.507 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped main stack 2
-[17:40:50.507 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Reload memory 3
-[17:40:50.507 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.507 [Information] Snapped main TOS 3
-[17:40:50.507 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Reload main stack 2
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Reload main TOS 3
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped alu (2, 3)
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Alu operation: Add
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped flags (False, False, False)
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped main TOS 5
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Reload main pointer 2
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped null
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped alu (0, 2)
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Alu operation: Dec
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped main pointer 1
-[17:40:50.508 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Reload main pointer 1
-[17:40:50.508 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped null
-[17:40:50.508 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped alu (0, 1)
-[17:40:50.508 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Alu operation: Inc
-[17:40:50.508 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped main pointer 2
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Reload main TOS 5
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.508 [Information] Snapped main stack 5
-[17:40:50.508 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Reload memory 2
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped main TOS 2
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Reload main stack 5
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Reload main TOS 2
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped alu (5, 2)
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Alu operation: Add
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped flags (False, False, False)
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped main TOS 7
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Reload main pointer 2
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped null
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped alu (0, 2)
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Alu operation: Dec
-[17:40:50.509 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped main pointer 1
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Reload main stack 1
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Reload main TOS 7
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped alu (1, 7)
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Alu operation: Add
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped flags (False, False, False)
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped main TOS 8
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Reload main pointer 1
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped null
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped alu (0, 1)
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Alu operation: Dec
-[17:40:50.509 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Snapped main pointer 0
-[17:40:50.509 [Warning] Main stack pointer: 0 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.509 [Information] Reload main TOS 8
-[17:40:50.509 [Warning] Main stack pointer: 0 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
-[17:40:50.510 [Information] Snapped IO 8
-[17:40:50.510 [Warning] Main stack pointer: 0 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
-[17:40:50.510 [Information] Reload main stack 0
-[17:40:50.510 [Warning] Main stack pointer: 0 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
-[17:40:50.510 [Information] Snapped main TOS 0
-[17:40:50.510 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
-[17:40:50.510 [Information] Reload main pointer 0
-[17:40:50.510 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
-[17:40:50.510 [Information] Snapped null
-[17:40:50.510 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
-[17:40:50.510 [Information] Snapped alu (0, 0)
-[17:40:50.510 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
-[17:40:50.510 [Information] Alu operation: Dec
-[17:40:50.510 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
-[17:40:50.510 [Information] Snapped main pointer -1
-[17:40:50.510 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
+[12:35:14.439 [Information] Imitation started
+[12:35:14.439 [Information] 1 loaded to memory at 0
+[12:35:14.439 [Information] 2 loaded to memory at 1
+[12:35:14.439 [Information] 3 loaded to memory at 2
+[12:35:14.439 [Information] + loaded to memory at 3
+[12:35:14.439 [Information] 2 loaded to memory at 4
+[12:35:14.439 [Information] + loaded to memory at 5
+[12:35:14.439 [Information] + loaded to memory at 6
+[12:35:14.439 [Information] . loaded to memory at 7
+[12:35:14.439 [Information]  loaded to memory at 8
+[12:35:14.439 [Information] _ loaded to memory at 9
+[12:35:14.440 [Information] Reload main pointer -1
+[12:35:14.440 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped null
+[12:35:14.440 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped alu (0, -1)
+[12:35:14.440 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Alu operation: Inc
+[12:35:14.440 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main pointer 0
+[12:35:14.440 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main TOS 0
+[12:35:14.440 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main stack 0
+[12:35:14.440 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload memory 1
+[12:35:14.440 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main TOS 1
+[12:35:14.440 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main pointer 0
+[12:35:14.440 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped null
+[12:35:14.440 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped alu (0, 0)
+[12:35:14.440 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Alu operation: Inc
+[12:35:14.440 [Warning] Main stack pointer: 0 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main pointer 1
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main TOS 1
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 1 | Main stack: 0 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main stack 1
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 1 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload memory 2
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 1 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main TOS 2
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main pointer 1
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped null
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped alu (0, 1)
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Alu operation: Inc
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main pointer 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main TOS 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main stack 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload memory 3
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main TOS 3
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main stack 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main TOS 3
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped alu (2, 3)
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Alu operation: Add
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped flags (False, False, False)
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 3 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main TOS 5
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main pointer 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped null
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped alu (0, 2)
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Alu operation: Dec
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main pointer 1
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main pointer 1
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped null
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped alu (0, 1)
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Alu operation: Inc
+[12:35:14.440 [Warning] Main stack pointer: 1 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main pointer 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main TOS 5
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 2 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main stack 5
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload memory 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 5 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main TOS 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main stack 5
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main TOS 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped alu (5, 2)
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Alu operation: Add
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped flags (False, False, False)
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 2 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped main TOS 7
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Reload main pointer 2
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.440 [Information] Snapped null
+[12:35:14.440 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped alu (0, 2)
+[12:35:14.441 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Alu operation: Dec
+[12:35:14.441 [Warning] Main stack pointer: 2 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped main pointer 1
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Reload main stack 1
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Reload main TOS 7
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped alu (1, 7)
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Alu operation: Add
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped flags (False, False, False)
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 7 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped main TOS 8
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Reload main pointer 1
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped null
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped alu (0, 1)
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Alu operation: Dec
+[12:35:14.441 [Warning] Main stack pointer: 1 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped main pointer 0
+[12:35:14.441 [Warning] Main stack pointer: 0 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Reload main TOS 8
+[12:35:14.441 [Warning] Main stack pointer: 0 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 0 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped IO 8
+[12:35:14.441 [Warning] Main stack pointer: 0 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
+[12:35:14.441 [Information] Reload main stack 0
+[12:35:14.441 [Warning] Main stack pointer: 0 | Main TOS: 8 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped main TOS 0
+[12:35:14.441 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
+[12:35:14.441 [Information] Reload main pointer 0
+[12:35:14.441 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped null
+[12:35:14.441 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped alu (0, 0)
+[12:35:14.441 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
+[12:35:14.441 [Information] Alu operation: Dec
+[12:35:14.441 [Warning] Main stack pointer: 0 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)
+[12:35:14.441 [Information] Snapped main pointer -1
+[12:35:14.441 [Warning] Main stack pointer: -1 | Main TOS: 0 | Main stack: 0 1 5 | Buffer stack pointer: -1 | Buffer TOS: 0 | Buffer stack: | IO: 8 | Flags: (False, False, False)

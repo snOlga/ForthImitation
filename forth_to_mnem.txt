@@ -55,18 +55,20 @@ if
 reload main
 reload null
 do or
-check true
+check zero
 jump else
 
 else
 reload main
 reload null
 do or
-check false
+check not zero
 jump then
 
 do
 save address
+inc sp2
+tos2 to 2nd
 inc sp2
 stack1 to stack2
 tos1 to tos2
@@ -76,15 +78,15 @@ dec sp1
 dec sp1
 reload buffer
 do less
-check true
+check not less
 jump loop
 
 loop
 inc i
 reload buffer
 do less
-check false
-jump for
+check less
+jump do
 
 !
 reload main

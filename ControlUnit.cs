@@ -14,6 +14,7 @@ public class ControlUnit
     private readonly Dictionary<string, string[]> namedProcedures = new Dictionary<string, string[]>();
     private JumpSignal jumpSignal = JumpSignal.Nothing;
     private CheckSignal checkSignal = CheckSignal.Nothing;
+    private Stack<int> returnAddresses = new Stack<int>();
     #region metadata
     private static int microCount = 0;
     private static int programSize = 0;
@@ -74,7 +75,7 @@ public class ControlUnit
                     mnemonicProgramm.AddRange(mnemonics[20..22]);
                     break;
                 case "rot":
-                    mnemonicProgramm.AddRange(mnemonics[114..126]);
+                    mnemonicProgramm.AddRange(mnemonics[116..128]);
                     break;
                 case "+":
                     mnemonicProgramm.AddRange(mnemonics[30..34]);
@@ -98,19 +99,19 @@ public class ControlUnit
                     mnemonicProgramm.AddRange(mnemonics[61..66]);
                     break;
                 case "do":
-                    mnemonicProgramm.AddRange(mnemonics[68..80]);
+                    mnemonicProgramm.AddRange(mnemonics[68..82]);
                     break;
                 case "loop":
-                    mnemonicProgramm.AddRange(mnemonics[82..87]);
+                    mnemonicProgramm.AddRange(mnemonics[84..89]);
                     break;
                 case "swap":
-                    mnemonicProgramm.AddRange(mnemonics[93..107]);
+                    mnemonicProgramm.AddRange(mnemonics[95..109]);
                     break;
                 case "!":
-                    mnemonicProgramm.AddRange(mnemonics[89..91]);
+                    mnemonicProgramm.AddRange(mnemonics[91..93]);
                     break;
                 case "?":
-                    mnemonicProgramm.AddRange(mnemonics[109..112]);
+                    mnemonicProgramm.AddRange(mnemonics[111..114]);
                     break;
             }
 
@@ -240,18 +241,30 @@ public class ControlUnit
 
         foreach (string mnemonic in decodeResult.mnemonicProg)
         {
-            if (mnemonic.Contains("jump do"))
+            if(mnemonic == "")
+                continue;
+            if (mnemonic == "jump do")
                 jumpSignal = JumpSignal.Do;
-            else if (mnemonic.Contains("jump loop"))
+            else if (mnemonic == "jump loop")
                 jumpSignal = JumpSignal.Loop;
-            else if (mnemonic.Contains("jump else"))
+            else if (mnemonic == "jump else")
                 jumpSignal = JumpSignal.Else;
-            else if (mnemonic.Contains("jump then"))
+            else if (mnemonic == "jump then")
                 jumpSignal = JumpSignal.Then;
-            else if (mnemonic.Contains("check true"))
-                checkSignal = CheckSignal.True;
-            else if (mnemonic.Contains("check false"))
-                checkSignal = CheckSignal.False;
+            else if (mnemonic == "check zero")
+                checkSignal = CheckSignal.Zero;
+            else if (mnemonic == "check not zero")
+                checkSignal = CheckSignal.NotZero;
+            else if (mnemonic == "check negative")
+                checkSignal = CheckSignal.Negative;
+            else if (mnemonic == "check not negative")
+                checkSignal = CheckSignal.NotNegative;
+            else if (mnemonic == "check less")
+                checkSignal = CheckSignal.Less;
+            else if (mnemonic == "check not less")
+                checkSignal = CheckSignal.NotLess;
+            else if(mnemonic == "save address")
+                returnAddresses.Push(mainMemory.Pointer);
             else
             {
                 foreach (var microcommand in mnemonicAndMicrocode[mnemonic])
@@ -266,10 +279,18 @@ public class ControlUnit
     private int Postprocessing(int currentPointer)
     {
         bool needToJump = false;
-        if (checkSignal == CheckSignal.True)
+        if (checkSignal == CheckSignal.Zero)
             needToJump = flags.zero;
-        else if (checkSignal == CheckSignal.False)
+        else if (checkSignal == CheckSignal.NotZero)
             needToJump = !flags.zero;
+        else if (checkSignal == CheckSignal.Less)
+            needToJump = flags.less;
+        else if (checkSignal == CheckSignal.NotLess)
+            needToJump = !flags.less;
+        else if (checkSignal == CheckSignal.Negative)
+            needToJump = flags.neg;
+        else if (checkSignal == CheckSignal.NotNegative)
+            needToJump = !flags.neg;
 
         if (!needToJump)
         {
@@ -290,10 +311,15 @@ public class ControlUnit
         }
         else if (jumpSignal == JumpSignal.Loop)
         {
+            returnAddresses.Pop();
             while (mainMemory.GetData(currentPointer) != "loop")
                 currentPointer++;
         }
-        
+        else if(jumpSignal == JumpSignal.Do)
+        {
+            currentPointer = returnAddresses.Peek();
+        }
+
         if (mainMemory.GetData(currentPointer) == "!")
         {
             indexForVariable++;
@@ -506,7 +532,11 @@ public enum JumpSignal
 }
 public enum CheckSignal
 {
-    True,
-    False,
+    Zero,
+    NotZero,
+    Less,
+    NotLess,
+    Negative,
+    NotNegative,
     Nothing
 }
