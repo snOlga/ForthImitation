@@ -1,3 +1,5 @@
+using Serilog;
+
 public class ControlUnit
 {
     private readonly Memory mainMemory;
@@ -19,9 +21,10 @@ public class ControlUnit
     private static int microCount = 0;
     private static int programSize = 0;
     private static int instructionCount = 0;
+    private static int programLength = 0;
     public string GetMetaData()
     {
-        return $"Microcommands count: {microCount} | Program size in bit: {programSize} | Instruction count: {instructionCount}";
+        return $"Microcommands count: {microCount} | Program size in bit: {programSize} | Instruction count: {instructionCount} | Program length: {programLength}";
     }
     #endregion
     private class Decoder
@@ -118,7 +121,7 @@ public class ControlUnit
             return (mnemonicProgramm.ToArray(), loadType);
         }
     }
-    public ControlUnit(string fileNameMainProg, string fileNameCM, DataPath actualDataPath, string fileNameMnemonicDescription)
+    public ControlUnit(string fileNameMainProg, string fileNameCM, string fileNameMnemonicDescription, DataPath actualDataPath)
     {
         dataPath = actualDataPath;
         mainMemory = dataPath.MainMemory;
@@ -133,6 +136,7 @@ public class ControlUnit
         //prog to memory
         for (int instrIndex = 0; instrIndex < forthProgramm.Length; instrIndex++)
         {
+            //parsing string const
             string instruction = forthProgramm[instrIndex];
             if (instruction.Contains('\"') && (instruction.Substring(0, 1) == "\"" && !instruction.EndsWith("\"") || instruction == "\""))
             {
@@ -208,10 +212,15 @@ public class ControlUnit
     }
     public void Work()
     {
+        string mnemProgResultString = "Programm translated to mnemonics as:\n";
         int currentPointer = startProgrammIndex;
-        while (mainMemory.GetData(currentPointer) != "_")
+        string currentInst = mainMemory.GetData(currentPointer);
+        while (currentInst != "_")
         {
-            (string[] mnemonicProg, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(mainMemory.GetData(currentPointer));
+            (string[] mnemonicProg, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(currentInst);
+
+            mnemProgResultString += "\n---" + currentInst + ":\n" + String.Join("\n", decodeResult.mnemonicProg);
+            programLength += decodeResult.mnemonicProg.Length;
 
             string[] microCode = Preprocessing(decodeResult);
 
@@ -228,7 +237,10 @@ public class ControlUnit
 
             currentPointer++;
             instructionCount++;
+            currentInst = mainMemory.GetData(currentPointer);
         }
+
+        Log.Information("---\n" + mnemProgResultString);
     }
     private string[] Preprocessing((string[] mnemonicProg, LoadTypes loadType) decodeResult)
     {
@@ -239,9 +251,10 @@ public class ControlUnit
 
         List<string> microProg = new List<string>();
 
+        //mnemonic prog to microcode
         foreach (string mnemonic in decodeResult.mnemonicProg)
         {
-            if(mnemonic == "")
+            if (mnemonic == "")
                 continue;
             if (mnemonic == "jump do")
                 jumpSignal = JumpSignal.Do;
@@ -263,7 +276,7 @@ public class ControlUnit
                 checkSignal = CheckSignal.Less;
             else if (mnemonic == "check not less")
                 checkSignal = CheckSignal.NotLess;
-            else if(mnemonic == "save address")
+            else if (mnemonic == "save address")
                 returnAddresses.Push(mainMemory.Pointer);
             else
             {
@@ -315,7 +328,7 @@ public class ControlUnit
             while (mainMemory.GetData(currentPointer) != "loop")
                 currentPointer++;
         }
-        else if(jumpSignal == JumpSignal.Do)
+        else if (jumpSignal == JumpSignal.Do)
         {
             currentPointer = returnAddresses.Peek();
         }

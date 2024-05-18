@@ -1,1 +1,1 @@
-: fib dup rot + ; 1 1 10 0 do dup . " " drop . fib loop 
+1 1 1 10 0 do + dup dup . " " drop . rot loop 

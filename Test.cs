@@ -76,11 +76,12 @@ public class Test
         Log.Information("Imitation started");
 
         string outputFile = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\tests" + "\\output.txt";
-        string microcodeFile = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\forth_to_mnem.txt";
+        string mnemonicFile = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\forth_to_mnem.txt";
+        string microcodeFile = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\mnemonic_description.txt";
 
         Memory memory = new Memory();
         DataPath dataPath = new DataPath(memory, input, outputFile);
-        ControlUnit controlUnit = new ControlUnit(testPath, microcodeFile, dataPath, "D:\\ITMO\\2_year\\csa\\ForthImitation\\mnemonic_description.txt");
+        ControlUnit controlUnit = new ControlUnit(testPath, mnemonicFile, microcodeFile, dataPath);
 
         controlUnit.Work();
 

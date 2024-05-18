@@ -5,14 +5,17 @@ args:
 0 - main programm
 1 - file for input
 2 - file for output
-3 - main microcode
+3 - forth to mnemonic file
+4 - mnemonic to microcode file
+5 - logging file
 */
 
 string mainProg = Directory.GetCurrentDirectory() + "\\" + args[0];
 string inputFile = Directory.GetCurrentDirectory() + "\\" + args[1];
 string outputFile = Directory.GetCurrentDirectory() + "\\" + args[2];
-string microcode = Directory.GetCurrentDirectory() + "\\" + args[3];
-string logging = Directory.GetCurrentDirectory() + "\\" + args[4];
+string mnemonic = Directory.GetCurrentDirectory() + "\\" + args[3];
+string microcode = Directory.GetCurrentDirectory() + "\\" + args[4];
+string logging = Directory.GetCurrentDirectory() + "\\" + args[5];
 
 File.WriteAllText(logging, string.Empty);
 
@@ -26,7 +29,7 @@ Log.Logger = new LoggerConfiguration()
 Log.Information("Imitation started");
 Memory memory = new Memory();
 DataPath dataPath = new DataPath(memory, inputFile, outputFile);
-ControlUnit controlUnit = new ControlUnit(mainProg, microcode, dataPath, "D:\\ITMO\\2_year\\csa\\ForthImitation\\mnemonic_description.txt");
+ControlUnit controlUnit = new ControlUnit(mainProg, mnemonic, microcode, dataPath);
 
 controlUnit.Work();
 
