@@ -265,7 +265,7 @@ args:
 - Флаги: (negative, zero, less)
 - Наличие флага less означает, что на вершине стека находится меньшее значение, чем на второй позиции от вершины. 
 
-![DataPath](https://sun9-57.userapi.com/impg/V1a8OQC_YvaXiNE_F6P3gvxtMJth40LM5yeRgg/sAA8Dgjuxx4.jpg?size=936x1312&quality=96&sign=c6cfb51fec1e74d45c0e11f3790d64d8&type=album)
+![DataPath](https://sun9-65.userapi.com/impg/JqRVUP_-93k4zhRwMlzfod-QpCrc9lrdKqcYkA/6cCs0a4u_NU.jpg?size=1022x1204&quality=96&sign=9bfa067b88c2ddca0142b374439f3617&type=album)
 
 
 ControlUnit
@@ -273,7 +273,7 @@ ControlUnit
 - Реализован в классе [ControlUnit.cs](ControlUnit.cs)
 - Обрабатывает флаги, полученные от DataPath
 
-![ControlUnit](https://sun9-26.userapi.com/impg/aDcpmPfYqp-_OUmXCoJx98DpkNCQW09MWKNRxw/A9nFj1dyU6o.jpg?size=775x751&quality=96&sign=24e21d764f353cb9c793cfaceb0877eb&type=album)
+![ControlUnit](https://sun9-16.userapi.com/impg/nr0SqhO4aIl3zjIlVhdgg8HwxXChc_MEULpPLA/zDSRWg7DXrk.jpg?size=820x1127&quality=96&sign=2bf581bf364519c5f94125b318886450&type=album)
 
 **Особенности модели**
 - При встрече инструкции, она тут же выполняется
