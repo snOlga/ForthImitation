@@ -93,6 +93,13 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 ```
 
 ## Система команд
+
+Инструкции транслируются в мнемоники, после чего - в микрокоманды.
+
+[Описание инструкций в мнемониках](forth_to_mnem.txt)
+
+[Описание мнемоник в микропрограммах](mnemonic_description.txt)
+
 - Числа занимают одну ячейку памяти
 - Числа представлены в целочисленном виде от 0 до 2^32-1
 - Строки представлены в виде массива символов, где начальная запись - длина строки; в стеке длина строки помещается в вершину стека
@@ -267,6 +274,9 @@ args:
 
 ![DataPath](https://sun9-65.userapi.com/impg/JqRVUP_-93k4zhRwMlzfod-QpCrc9lrdKqcYkA/6cCs0a4u_NU.jpg?size=1022x1204&quality=96&sign=9bfa067b88c2ddca0142b374439f3617&type=album)
 
+Развёрнутая схема:
+
+![DataPath](https://sun9-57.userapi.com/impg/V1a8OQC_YvaXiNE_F6P3gvxtMJth40LM5yeRgg/sAA8Dgjuxx4.jpg?size=936x1312&quality=96&sign=c6cfb51fec1e74d45c0e11f3790d64d8&type=album)
 
 ControlUnit
 
