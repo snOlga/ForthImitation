@@ -283,7 +283,7 @@ ControlUnit
 - Реализован в классе [ControlUnit.cs](ControlUnit.cs)
 - Обрабатывает флаги, полученные от DataPath
 
-![ControlUnit](https://sun9-16.userapi.com/impg/nr0SqhO4aIl3zjIlVhdgg8HwxXChc_MEULpPLA/zDSRWg7DXrk.jpg?size=820x1127&quality=96&sign=2bf581bf364519c5f94125b318886450&type=album)
+![ControlUnit](https://sun9-24.userapi.com/impg/te0RuRVRscuiMAtNOZHlUYrieawlghIPO2TLzg/UreWmVb-5pY.jpg?size=834x1042&quality=96&sign=56aca5b339679bb3f865843e2404a34f&type=album)
 
 **Особенности модели**
 - При встрече инструкции, она тут же выполняется
