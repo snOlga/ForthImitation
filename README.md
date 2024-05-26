@@ -274,7 +274,7 @@ args:
 - Флаги: (negative, zero, less)
 - Наличие флага less означает, что на вершине стека находится меньшее значение, чем на второй позиции от вершины. 
 
-![DataPath](https://sun9-65.userapi.com/impg/JqRVUP_-93k4zhRwMlzfod-QpCrc9lrdKqcYkA/6cCs0a4u_NU.jpg?size=1022x1204&quality=96&sign=9bfa067b88c2ddca0142b374439f3617&type=album)
+![DataPath](https://sun9-64.userapi.com/impg/XtkyMjCEH2Iz1t9Y8N_ThYRqDuHzcmhVwnnEZg/xbUteTEfy9g.jpg?size=1175x1396&quality=96&sign=bd6d67a9199b65a96fa0a821c92a7eec&type=album)
 
 Развёрнутая схема:
 
