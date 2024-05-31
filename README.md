@@ -67,7 +67,7 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 - Нет разделения памяти на коммандную и память данных
 - Глобальная видимость данных
 - Представлена в виде массива строк, размерностью 1000
-- Cлово микрокоманды является 14-значным двоичным числом
+- Cлово микрокоманды является 16-значным двоичным числом
 - Адресация происходит по обращению по индексу массива
 - Программа отображается на память, начиная с адреса 0
 - Программисту доступны операции с главным стеком и памятью, начиная с адреса 100
@@ -165,6 +165,8 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 11. buffer stack
 12. main stack
 13. special bit for reloading memory in only read format
+14. 0
+15. 0
 
 1 | stack pointer | stack | memory | TOS | ALU | IO | 0 | flags | input/snap | output/reload | buffer | main | only read
 
@@ -188,6 +190,8 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 11. 0
 12. 0
 13. 0
+14. 0
+15. 0
 
 0 | add | increment | and | or | less | substract | decrement | negative flag | zero flag | less flag | 0 | 0 | 0
 
@@ -405,9 +409,9 @@ Logging: [logging.log](logging.log)
 ```
 | ФИО                       | prog       | line count | prog size      | microinstr count | instr count | tick count | variant
 
-| Сафонова Ольга Данииловна | Hello User | 1510       | 4401 bit       | 4401             | 336         | 4814       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | hello user | 1510       | 70416 bit      | 4401             | 336         | 4814       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | cat        | 34387      | 1225462 bit    | 87533            | 9375        | 100045     | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | cat        | 34387      | 1400528 bit    | 87533            | 9375        | 100045     | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | fibonacci  | 386        | 17654 bit      | 1261             | 96          | 1366       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | fibonacci  | 386        | 20320 bit      | 1261             | 96          | 1366       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 ```

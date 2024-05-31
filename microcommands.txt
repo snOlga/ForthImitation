@@ -1,29 +1,29 @@
-snap stack pointer1     11000000010010
-snap stack1		        10100000010010
-snap stack pointer2	    11000000010100
-snap stack2		        10100000010100
-snap memory		        10010000010000
-snap tos1		        10001000010010
-snap tos2		        10001000010100
-snap alu		        10000100010000
-snap io input		    10000010010000
-snap io output		    10000010001000
-snap command pointer	10000001010000
-snap flags		        10000000110000
-snap null		        10000000010000
-reload stack pointer1	11000000001010
-reload stack1		    10100000001010
-reload stack pointer2	11000000001100
-reload stack2		    10100000001100
-reload memory		    10010000001000
-reload read memory      10010000001001
-reload tos1		        10001000001010
-reload tos2		        10001000001100
-reload command pointer	10000001001000
-add 			        01000000110000
-inc 			        00100000110000
-and 			        00010000110000
-or 			            00001000110000
-less			        00000100011011
-misubstractnus 			00000010110110
-dec 			        00000001110110
+snap stack pointer1     1100000001001000
+snap stack1		        1010000001001000
+snap stack pointer2	    1100000001010000
+snap stack2		        1010000001010000
+snap memory		        1001000001000000
+snap tos1		        1000100001001000
+snap tos2		        1000100001010000
+snap alu		        1000010001000000
+snap io input		    1000001001000000
+snap io output		    1000001000100000
+snap command pointer	1000000101000000
+snap flags		        1000000011000000
+snap null		        1000000001000000
+reload stack pointer1	1100000000101000
+reload stack1		    1010000000101000
+reload stack pointer2	1100000000110000
+reload stack2		    1010000000110000
+reload memory		    1001000000100000
+reload read memory      1001000000100100
+reload tos1		        1000100000101000
+reload tos2		        1000100000110000
+reload command pointer	1000000100100000
+add 			        0100000011000000
+inc 			        0010000011000000
+and 			        0001000011000000
+or 			            0000100011000000
+less			        0000010001101100
+misubstractnus 			0000001011011000
+dec 			        0000000111011000
