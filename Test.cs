@@ -3,59 +3,59 @@ using Serilog;
 
 public class Test
 {
-    [TestCase("\\test_if.txt",
+    [TestCase("\\unit\\test_if.txt",
                 "\\results\\result_if.txt",
                 "\\logs\\if.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_loop.txt",
+    [TestCase("\\unit\\test_loop.txt",
                 "\\results\\result_loop.txt",
                 "\\logs\\loop.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_math.txt",
+    [TestCase("\\unit\\test_math.txt",
                 "\\results\\result_math.txt",
                 "\\logs\\math.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_swap.txt",
+    [TestCase("\\unit\\test_swap.txt",
                 "\\results\\result_swap.txt",
                 "\\logs\\swap.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_string_const.txt",
+    [TestCase("\\unit\\test_string_const.txt",
                 "\\results\\result_string_const.txt",
                 "\\logs\\string_const.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_variables.txt",
+    [TestCase("\\unit\\test_variables.txt",
                 "\\results\\result_variables.txt",
                 "\\logs\\variables.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_dup.txt",
+    [TestCase("\\unit\\test_dup.txt",
                 "\\results\\result_dup.txt",
                 "\\logs\\dup.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_rot.txt",
+    [TestCase("\\unit\\test_rot.txt",
                 "\\results\\result_rot.txt",
                 "\\logs\\rot.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_simple_procedure.txt",
+    [TestCase("\\unit\\test_simple_procedure.txt",
                 "\\results\\result_simple_procedure.txt",
                 "\\logs\\simple_procedure.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_fibonacci.txt",
+    [TestCase("\\unit\\test_fibonacci.txt",
                 "\\results\\result_fibonacci.txt",
                 "\\logs\\fibonacci.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_fibonacci_procedure.txt",
+    [TestCase("\\golden\\test_fibonacci_procedure.txt",
                 "\\results\\result_fibonacci_procedure.txt",
                 "\\logs\\fibonacci_procedure.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_hello_world.txt",
+    [TestCase("\\unit\\test_hello_world.txt",
                 "\\results\\result_hello_world.txt",
                 "\\logs\\hello_world.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\test_hello_user.txt",
+    [TestCase("\\golden\\test_hello_user.txt",
                 "\\results\\result_hello_user.txt",
                 "\\logs\\hello_user.log",
                 "\\inputs\\input_user.txt")]
-    [TestCase("\\test_cat.txt",
+    [TestCase("\\golden\\test_cat.txt",
                 "\\results\\result_cat.txt",
                 "\\logs\\cat.log",
                 "\\inputs\\input_cat.txt")]
