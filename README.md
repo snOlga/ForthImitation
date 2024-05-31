@@ -299,9 +299,9 @@ ControlUnit
 ## Тестирование
 Алгоритмы тестов располагаются в директории tests
 
-- [cat](/tests/test_cat.txt)
-- [hello user](/tests/test_hello_user.txt)
-- [fibonacci](/tests/test_fibonacci_procedure.txt)
+- [cat](/golden/tests/test_cat.txt)
+- [hello user](/golden/tests/test_hello_user.txt)
+- [fibonacci](/golden/tests/test_fibonacci_procedure.txt)
 
 **Fibonacci**
 
