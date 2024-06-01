@@ -10,12 +10,12 @@ args:
 5 - logging file
 */
 
-string mainProg = Directory.GetCurrentDirectory() + "\\" + args[0];
-string inputFile = Directory.GetCurrentDirectory() + "\\" + args[1];
-string outputFile = Directory.GetCurrentDirectory() + "\\" + args[2];
-string mnemonic = Directory.GetCurrentDirectory() + "\\" + args[3];
-string microcode = Directory.GetCurrentDirectory() + "\\" + args[4];
-string logging = Directory.GetCurrentDirectory() + "\\" + args[5];
+string mainProg = Directory.GetCurrentDirectory() + "\\main_program_data\\" + args[0];
+string inputFile = Directory.GetCurrentDirectory() + "\\main_program_data\\" + args[1];
+string outputFile = Directory.GetCurrentDirectory() + "\\main_program_data\\" + args[2];
+string mnemonic = Directory.GetCurrentDirectory() + "\\decoder_data\\" + args[3];
+string microcode = Directory.GetCurrentDirectory() + "\\decoder_data\\" + args[4];
+string logging = Directory.GetCurrentDirectory() + "\\main_program_data\\" + args[5];
 
 File.WriteAllText(logging, string.Empty);
 
