@@ -3,9 +3,9 @@ using Serilog;
 public class DataPath
 {
     public static int TickCounter = 0;
-    StreamReader streamReader;
-    StreamWriter streamWriter;
-    private Memory mainMemory;
+    private readonly StreamReader streamReader;
+    private readonly StreamWriter streamWriter;
+    private readonly Memory mainMemory;
     #region real_registers
     private string[] mainStack = new string[500];
     private int mainStackPointer = -1;

@@ -12,11 +12,11 @@ public class ControlUnit
     private int howManyPushConst = 0;
     private bool isPushedFromMemory = false;
     private int bufferOffset = 0;
-    private Dictionary<string, string[]> mnemonicAndMicrocode = new Dictionary<string, string[]>();
+    private readonly Dictionary<string, string[]> mnemonicAndMicrocode = new Dictionary<string, string[]>();
     private readonly Dictionary<string, string[]> namedProcedures = new Dictionary<string, string[]>();
     private JumpSignal jumpSignal = JumpSignal.Nothing;
     private CheckSignal checkSignal = CheckSignal.Nothing;
-    private Stack<int> returnAddresses = new Stack<int>();
+    private readonly Stack<int> returnAddresses = new Stack<int>();
     #region metadata
     private static int microCount = 0;
     private static int programSize = 0;
@@ -139,7 +139,7 @@ public class ControlUnit
         {
             //parsing string const
             string instruction = forthProgramm[instrIndex];
-            if (instruction.Contains('\"') && (instruction.Substring(0, 1) == "\"" && !instruction.EndsWith("\"") || instruction == "\""))
+            if (instruction.Contains('\"') && (instruction.Substring(0, 1) == "\"" && !instruction.EndsWith('"') || instruction == "\""))
             {
                 rememberLine += instruction + " ";
                 instrIndex++;
@@ -200,7 +200,7 @@ public class ControlUnit
         List<string> microcode = new List<string>();
         foreach (string mnemonic in mnemonicDescription)
         {
-            if (mnemonic.StartsWith("1") || mnemonic.StartsWith("0"))
+            if (mnemonic.StartsWith('1') || mnemonic.StartsWith('0'))
             {
                 string code = mnemonic.Split(' ')[0];
                 microcode.Add(code);
