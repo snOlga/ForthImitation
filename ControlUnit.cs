@@ -315,7 +315,6 @@ public class ControlUnit
         {
             checkSignal = CheckSignal.Nothing;
             jumpSignal = JumpSignal.Nothing;
-            return currentPointer;
         }
 
         if (jumpSignal == JumpSignal.Else)
@@ -341,7 +340,10 @@ public class ControlUnit
 
         if (mainMemory.GetData(currentPointer) == "!")
         {
-            indexForVariable++;
+            while(mainMemory.GetData(indexForVariable) != null)
+            {
+                indexForVariable++;
+            }
         }
         checkSignal = CheckSignal.Nothing;
         jumpSignal = JumpSignal.Nothing;
