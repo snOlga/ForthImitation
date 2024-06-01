@@ -44,19 +44,19 @@ public class Test
                 "\\unit_logs\\fibonacci.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\golden\\test_fibonacci_procedure.txt",
-                "\\results\\result_fibonacci_procedure.txt",
+                "\\golden\\results\\result_fibonacci_procedure.txt",
                 "\\golden\\fibonacci_procedure.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\golden\\test_hello_world.txt",
-                "\\results\\result_hello_world.txt",
+                "\\golden\\results\\result_hello_world.txt",
                 "\\golden\\hello_world.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\golden\\test_hello_user.txt",
-                "\\results\\result_hello_user.txt",
+                "\\golden\\results\\result_hello_user.txt",
                 "\\golden\\hello_user.log",
                 "\\inputs\\input_user.txt")]
     [TestCase("\\golden\\test_cat.txt",
-                "\\results\\result_cat.txt",
+                "\\golden\\results\\result_cat.txt",
                 "\\golden\\cat.log",
                 "\\inputs\\input_cat.txt")]
     public void TestsNoInput(string testPath, string resultPath, string logging, string input)
