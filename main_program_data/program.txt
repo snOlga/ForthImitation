@@ -1,1 +1,1 @@
-: fib dup rot + ; 0 variable ! drop drop 1 1 10 0 do dup 1 and if drop drop else drop variable 1 - ? swap drop + variable ! drop drop then fib loop .
+: fib dup rot + ; 0 variable ! 1 1 10 0 do fib dup 1 and if drop else drop dup variable 1 - ? swap drop + variable ! drop drop then loop variable 1 - ? .

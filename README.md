@@ -310,33 +310,38 @@ ControlUnit
 [program.txt](main_program_data/program.txt)
 
 ```
-: fib dup rot + ; 1 1 10 0 do dup . " " drop . fib loop 
-```
-Translated to memory:
-```
-1 1 10 0 do dup . " " drop . dup rot + loop 
-```
-Translated to microcode:
+: fib dup rot + ; 0 variable ! 1 1 10 0 do fib dup 1 and if drop else drop dup variable 1 - ? swap drop + variable ! drop drop then loop variable 1 - ? .
 ```
 Programm translated to mnemonics as:
-
----1:
+```
+[12:04:44.654 [Information] 0
 inc sp1
 tos1 to 2nd
 mem to tos1
----1:
+[12:04:44.654 [Information] variable
 inc sp1
 tos1 to 2nd
 mem to tos1
----10:
+[12:04:44.654 [Information] !
+reload main
+to mem
+[12:04:44.654 [Information] 1
 inc sp1
 tos1 to 2nd
 mem to tos1
----0:
+[12:04:44.654 [Information] 1
 inc sp1
 tos1 to 2nd
 mem to tos1
----do:
+[12:04:44.654 [Information] 10
+inc sp1
+tos1 to 2nd
+mem to tos1
+[12:04:44.654 [Information] 0
+inc sp1
+tos1 to 2nd
+mem to tos1
+[12:04:44.654 [Information] do
 save address
 inc sp2
 tos2 to 2nd
@@ -351,28 +356,10 @@ reload buffer
 do less
 check not less
 jump loop
----dup:
+[12:04:44.654 [Information] dup
 inc sp1
 tos1 to 2nd
----.:
-io output
-2nd to tos1
-dec sp1
----" ":
-inc sp1
-tos1 to 2nd
-mem to tos1
----drop:
-2nd to tos1
-dec sp1
----.:
-io output
-2nd to tos1
-dec sp1
----dup:
-inc sp1
-tos1 to 2nd
----rot:
+[12:04:44.654 [Information] rot
 inc sp2
 tos2 to 2nd
 inc sp2
@@ -385,25 +372,37 @@ inc sp1
 dec sp2
 2nd to tos2
 dec sp2
----+:
+[12:04:44.654 [Information] +
 reload main
 do add
 to tos1
 dec sp1
----loop:
-inc i
-reload buffer
-do less
-check less
-jump do
+[12:04:44.654 [Information] dup
+inc sp1
+tos1 to 2nd
+[12:04:44.654 [Information] 1
+inc sp1
+tos1 to 2nd
+mem to tos1
+[12:04:44.654 [Information] and
+reload main
+do and
+to tos1
+dec sp1
+[12:04:44.654 [Information] if
+reload main
+reload null
+do or
+check zero
+jump else
 
 ...
 ```
 
-Console output: ``` Tick count: 1378
-Microcommands count: 1270 | Program size in bit: 17780 | Instruction count: 97 | Program length: 389 ```
+Console output: ``` Tick count: 2517
+Microcommands count: 1801 | Program size in bit: 28816 | Instruction count: 161 | Program length: 646 ```
 
-Output: ```1 2 3 5 8 13 21 34 55 89 ```.
+Output: ```188```.
 
 Logging: [logging.log](main_program_data/logging.log)
 
@@ -411,11 +410,11 @@ Logging: [logging.log](main_program_data/logging.log)
 ```
 | ФИО                       | prog         | line count | prog size      | microinstr count | instr count | tick count | variant
 
-| Сафонова Ольга Данииловна | hello user   | 1510       | 70416 bit      | 4401             | 336         | 4814       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | hello user   | 1510       | 70416 bit      | 4401             | 336         | 5496       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | cat          | 34387      | 1400528 bit    | 87533            | 9375        | 100045     | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | cat          | 34387      | 1400528 bit    | 87533            | 9375        | 112547     | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | fibonacci    | 386        | 20176 bit      | 1261             | 96          | 1366       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | fibonacci    | 646        | 28816 bit      | 1801             | 161         | 2517       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | hello world  | 124        | 6672 bit       | 417              | 29          | 482        | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | hello world  | 124        | 6672 bit       | 417              | 29          | 516        | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 ```
