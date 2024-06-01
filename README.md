@@ -200,7 +200,7 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 0 | add | 0 | 0 | 0 | 0 | 0 | 0 | negative flag | zero flag | 0 | 0 | 0 | 0 <br>
 читается как: add and touch n,z flags
 
-Каждая инструкция транслируется в набор микрокоманд с помощью [листинга микропрограмм](decoder_data/microcode.txt).
+Каждая инструкция транслируется в набор микрокоманд с помощью [листинга микропрограмм](decoder_data/microcommands.txt).
 
 Количество тактов:
 ```
@@ -256,13 +256,14 @@ args:
 
 ## Модель процессора
 Входные данные:
-- [машинный код](main_program_data/microcode.txt)
+- [описание трансляции](main_program_data/forth_to_mnem.txt)
+- [описание мнемоник](main_program_data/mnemonic_description.txt)
 - [программа](main_program_data/program.txt)
 - [файл с входными данными](main_program_data/input.txt)
 
 Выходные данные:
-- [журнал микроопераций и состояния процессора](main_program_data/logging.log)
-- [вывод процессора](main_program_data/output.txt)
+- [журнал операций и состояния процессора](main_program_data/logging.log)
+- [файл вывода](main_program_data/output.txt)
 
 Пояснение к журналу: пометка ```warning``` ставится на состояние, чтобы выделить его при форматировании. 
 
@@ -302,6 +303,7 @@ ControlUnit
 - [cat](/tests/golden/test_cat.txt)
 - [hello user](/tests/golden/test_hello_user.txt)
 - [fibonacci](/tests/golden/test_fibonacci_procedure.txt)
+- [hello world](/tests/golden/hello_world.txt)
 
 **Fibonacci**
 
@@ -407,11 +409,13 @@ Logging: [logging.log](main_program_data/logging.log)
 
 ## End
 ```
-| ФИО                       | prog       | line count | prog size      | microinstr count | instr count | tick count | variant
+| ФИО                       | prog         | line count | prog size      | microinstr count | instr count | tick count | variant
 
-| Сафонова Ольга Данииловна | hello user | 1510       | 70416 bit      | 4401             | 336         | 4814       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | hello user   | 1510       | 70416 bit      | 4401             | 336         | 4814       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | cat        | 34387      | 1400528 bit    | 87533            | 9375        | 100045     | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | cat          | 34387      | 1400528 bit    | 87533            | 9375        | 100045     | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | fibonacci  | 386        | 20320 bit      | 1261             | 96          | 1366       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | fibonacci    | 386        | 20176 bit      | 1261             | 96          | 1366       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+
+| Сафонова Ольга Данииловна | hello world  | 124        | 6672 bit       | 417              | 29          | 482        | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 ```

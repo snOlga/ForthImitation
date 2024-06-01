@@ -47,9 +47,9 @@ public class Test
                 "\\results\\result_fibonacci_procedure.txt",
                 "\\golden\\fibonacci_procedure.log",
                 "\\inputs\\input.txt")]
-    [TestCase("\\unit\\test_hello_world.txt",
+    [TestCase("\\golden\\test_hello_world.txt",
                 "\\results\\result_hello_world.txt",
-                "\\unit_logs\\hello_world.log",
+                "\\golden\\hello_world.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\golden\\test_hello_user.txt",
                 "\\results\\result_hello_user.txt",
