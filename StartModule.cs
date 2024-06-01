@@ -26,7 +26,8 @@ Log.Logger = new LoggerConfiguration()
                 outputTemplate: "[{Timestamp:HH:mm:ss.fff} [{Level}] {Message}{NewLine}{Exception}")
     .CreateLogger();
 
-Log.Information("Imitation started");
+Log.Information(File.ReadAllText(mainProg) + "\n");
+
 Memory memory = new Memory();
 DataPath dataPath = new DataPath(memory, inputFile, outputFile);
 ControlUnit controlUnit = new ControlUnit(mainProg, mnemonic, microcode, dataPath);
@@ -39,3 +40,8 @@ Log.CloseAndFlush();
 Console.WriteLine("Tick count: " + DataPath.TickCounter);
 Console.WriteLine(controlUnit.GetMetaData());
 
+string[] logs = File.ReadAllLines(logging);
+if(logs.Length > 5000)
+{
+    File.WriteAllLines(logging, logs[0..5000]);
+}

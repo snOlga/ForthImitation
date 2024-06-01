@@ -10,12 +10,12 @@ public class Memory
     {
         DataPath.TickCounter += 2;
         mainMemory[index] = data;
-        Log.Information($"{data} loaded to memory at {index}");
+        //Log.Information($"{data} loaded to memory at {index}");
     }
     public void LoadToMemory(string data)
     {
         mainMemory[pointer] = data;
-        Log.Information($"{data} loaded to memory at {pointer}");
+        //Log.Information($"{data} loaded to memory at {pointer}");
     }
     public string GetData(int index)
     {

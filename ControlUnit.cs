@@ -39,7 +39,7 @@ public class ControlUnit
         {
             get { return dataToMemory; }
         }
-        public (string[] microCode, LoadTypes loadType) DecodeInstruction(string name)
+        public (string[] decodedMnemonics, LoadTypes loadType) DecodeInstruction(string name)
         {
             LoadTypes loadType = LoadTypes.Nothing;
             List<string> mnemonicProgramm = new List<string>();
@@ -123,6 +123,7 @@ public class ControlUnit
     }
     public ControlUnit(string fileNameMainProg, string fileNameCM, string fileNameMnemonicDescription, DataPath actualDataPath)
     {
+        decoder = new Decoder(fileNameCM);
         dataPath = actualDataPath;
         mainMemory = dataPath.MainMemory;
 
@@ -174,20 +175,25 @@ public class ControlUnit
                 {
                     mainMemory.LoadToMemory(indexForLoading, instrInProcedure);
                     indexForLoading++;
+
+                    string[] translatedForLogging = decoder.DecodeInstruction(instrInProcedure).decodedMnemonics;
+                    Log.Information(instrInProcedure + "\n" + String.Join("\n", translatedForLogging));
                 }
                 indexForLoading--;
             }
             else
             {
                 mainMemory.LoadToMemory(indexForLoading, instruction);
+
+                string[] translatedForLogging = decoder.DecodeInstruction(instruction).decodedMnemonics;
+                Log.Information(instruction + "\n" + String.Join("\n", translatedForLogging));
             }
 
             indexForLoading++;
         }
         mainMemory.LoadToMemory(indexForLoading, "_"); //null pointer
-        decoder = new Decoder(fileNameCM);
 
-        //fill dict of microcode
+        //fill dict of mnemonics
         string[] mnemonicDescription = File.ReadAllLines(fileNameMnemonicDescription);
 
         string currentMnemonic = "";
@@ -212,14 +218,14 @@ public class ControlUnit
     }
     public void Work()
     {
-        string mnemProgResultString = "Programm translated to mnemonics as:\n";
+        string mnemProgResultString = "Mnemonics that done:\n";
         int currentPointer = startProgrammIndex;
         string currentInst = mainMemory.GetData(currentPointer);
         while (currentInst != "_")
         {
             (string[] mnemonicProg, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(currentInst);
 
-            mnemProgResultString += "\n---" + currentInst + ":\n" + String.Join("\n", decodeResult.mnemonicProg);
+            mnemProgResultString += "\n--- " + currentInst + "\n" + String.Join("\n", decodeResult.mnemonicProg);
             programLength += decodeResult.mnemonicProg.Length;
 
             string[] microCode = Preprocessing(decodeResult);

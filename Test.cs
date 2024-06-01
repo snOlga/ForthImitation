@@ -5,59 +5,59 @@ public class Test
 {
     [TestCase("\\unit\\test_if.txt",
                 "\\results\\result_if.txt",
-                "\\logs\\if.log",
+                "\\unit_logs\\if.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_loop.txt",
                 "\\results\\result_loop.txt",
-                "\\logs\\loop.log",
+                "\\unit_logs\\loop.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_math.txt",
                 "\\results\\result_math.txt",
-                "\\logs\\math.log",
+                "\\unit_logs\\math.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_swap.txt",
                 "\\results\\result_swap.txt",
-                "\\logs\\swap.log",
+                "\\unit_logs\\swap.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_string_const.txt",
                 "\\results\\result_string_const.txt",
-                "\\logs\\string_const.log",
+                "\\unit_logs\\string_const.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_variables.txt",
                 "\\results\\result_variables.txt",
-                "\\logs\\variables.log",
+                "\\unit_logs\\variables.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_dup.txt",
                 "\\results\\result_dup.txt",
-                "\\logs\\dup.log",
+                "\\unit_logs\\dup.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_rot.txt",
                 "\\results\\result_rot.txt",
-                "\\logs\\rot.log",
+                "\\unit_logs\\rot.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_simple_procedure.txt",
                 "\\results\\result_simple_procedure.txt",
-                "\\logs\\simple_procedure.log",
+                "\\unit_logs\\simple_procedure.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_fibonacci.txt",
                 "\\results\\result_fibonacci.txt",
-                "\\logs\\fibonacci.log",
+                "\\unit_logs\\fibonacci.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\golden\\test_fibonacci_procedure.txt",
                 "\\results\\result_fibonacci_procedure.txt",
-                "\\logs\\fibonacci_procedure.log",
+                "\\golden\\fibonacci_procedure.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_hello_world.txt",
                 "\\results\\result_hello_world.txt",
-                "\\logs\\hello_world.log",
+                "\\unit_logs\\hello_world.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\golden\\test_hello_user.txt",
                 "\\results\\result_hello_user.txt",
-                "\\logs\\hello_user.log",
+                "\\golden\\hello_user.log",
                 "\\inputs\\input_user.txt")]
     [TestCase("\\golden\\test_cat.txt",
                 "\\results\\result_cat.txt",
-                "\\logs\\cat.log",
+                "\\golden\\cat.log",
                 "\\inputs\\input_cat.txt")]
     public void TestsNoInput(string testPath, string resultPath, string logging, string input)
     {
@@ -73,7 +73,7 @@ public class Test
                         rollingInterval: RollingInterval.Infinite,
                         outputTemplate: "[{Timestamp:HH:mm:ss.fff} [{Level}] {Message}{NewLine}{Exception}")
             .CreateLogger();
-        Log.Information("Imitation started");
+        Log.Information(File.ReadAllText(testPath) + "\n");
 
         string outputFile = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\tests" + "\\output.txt";
         string mnemonicFile = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().IndexOf("\\bin\\Debug\\net8.0")) + "\\forth_to_mnem.txt";
@@ -93,5 +93,11 @@ public class Test
 
         if (testResult != resultNeeded)
             Assert.Fail("oops");
+
+        string[] logs = File.ReadAllLines(logging);
+        if (logs.Length > 5000)
+        {
+            File.WriteAllLines(logging, logs[0..5000]);
+        }
     }
 }
