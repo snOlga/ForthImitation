@@ -4,43 +4,43 @@ using Serilog;
 public class Test
 {
     [TestCase("\\unit\\test_if.txt",
-                "\\results\\result_if.txt",
+                "\\unit\\results\\result_if.txt",
                 "\\unit_logs\\if.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_loop.txt",
-                "\\results\\result_loop.txt",
+                "\\unit\\results\\result_loop.txt",
                 "\\unit_logs\\loop.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_math.txt",
-                "\\results\\result_math.txt",
+                "\\unit\\results\\result_math.txt",
                 "\\unit_logs\\math.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_swap.txt",
-                "\\results\\result_swap.txt",
+                "\\unit\\results\\result_swap.txt",
                 "\\unit_logs\\swap.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_string_const.txt",
-                "\\results\\result_string_const.txt",
+                "\\unit\\results\\result_string_const.txt",
                 "\\unit_logs\\string_const.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_variables.txt",
-                "\\results\\result_variables.txt",
+                "\\unit\\results\\result_variables.txt",
                 "\\unit_logs\\variables.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_dup.txt",
-                "\\results\\result_dup.txt",
+                "\\unit\\results\\result_dup.txt",
                 "\\unit_logs\\dup.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_rot.txt",
-                "\\results\\result_rot.txt",
+                "\\unit\\results\\result_rot.txt",
                 "\\unit_logs\\rot.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_simple_procedure.txt",
-                "\\results\\result_simple_procedure.txt",
+                "\\unit\\results\\result_simple_procedure.txt",
                 "\\unit_logs\\simple_procedure.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\unit\\test_fibonacci.txt",
-                "\\results\\result_fibonacci.txt",
+                "\\unit\\results\\result_fibonacci.txt",
                 "\\unit_logs\\fibonacci.log",
                 "\\inputs\\input.txt")]
     [TestCase("\\golden\\test_fibonacci_procedure.txt",
