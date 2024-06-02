@@ -109,7 +109,18 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 
 Операции инструкций осуществляются над стеком: над вершиной, вершиной и вторым число, вершиной и третьим числом со стека.
 
-Существует ветвление командами ```if <commands> else <commands> then```, где ```if``` проверяет наличие положительного числа на вершине стека, в случае ```true``` переходит на блок после ```if```, в случае ```false``` переходит на блок после ```else```, по завершению переходит на блок после ```then```.
+Существует ветвление командами ```if <commands> else <commands> then```, где ```if``` проверяет наличие ненулевого числа на вершине стека, в случае ```true``` переходит на блок после ```if```, в случае ```false``` переходит на блок после ```else```, по завершению переходит на блок после ```then```.
+
+Пример трансляции ```if``` в мнемоники:
+```
+reload main
+reload null
+do or
+check zero
+jump else
+```
+
+Работа иструкции ```jump```: выполняется, если осуществилась проверка ```check```, иначе происходит переход к следующей (будущей) мнемонике.  
 
 Возможность создания цикла командами ```<max value> <min value> do <commands> loop```: если на вершине буфферного стека меньшее число, выполняется блок после ```do``` и при встрече ```loop``` - вершина стека инкрементируется; иначе, если на вершине буфферного стека большее либо равное число, выполняется блок после ```loop```.
 
@@ -117,35 +128,35 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 
 Все микрокомманды:
 ```
-11000000010010 - snap stack pointer1
-10100000010010 - snap stack1		        
-11000000010100 - snap stack pointer2	    
-10100000010100 - snap stack2		        
-10010000010000 - snap memory		        
-10001000010010 - snap tos1		        
-10001000010100 - snap tos2		        
-10000100010000 - snap alu		        
-10000010010000 - snap io input		    
-10000010001000 - snap io output		    
-10000001010000 - snap command pointer	
-10000000110000 - snap flags		        
-10000000010000 - snap null		        
-11000000001010 - reload stack pointer1	
-10100000001010 - reload stack1		    
-11000000001100 - reload stack pointer2	
-10100000001100 - reload stack2		    
-10010000001000 - reload memory		    
-10010000001001 - reload read memory      
-10001000001010 - reload tos1		        
-10001000001100 - reload tos2		        
-10000001001000 - reload command pointer	
-01000000110000 - add 			        
-00100000110000 - inc 			        
-00010000110000 - and 			        
-00001000110000 - or 			            
-00000100011011 - less			        
-00000010110110 - subtract 			    
-00000001110110 - dec 			        
+1100000001001000 - snap stack pointer1     
+1010000001001000 - snap stack1		        
+1100000001010000 - snap stack pointer2	    
+1010000001010000 - snap stack2		        
+1001000001000000 - snap memory		        
+1000100001001000 - snap tos1		        
+1000100001010000 - snap tos2		        
+1000010001000000 - snap alu		        
+1000001001000000 - snap io input		    
+1000001000100000 - snap io output		    
+1000000101000000 - snap command pointer	
+1000000011000000 - snap flags		        
+1000000001000000 - snap null		        
+1100000000101000 - reload stack pointer1	
+1010000000101000 - reload stack1		    
+1100000000110000 - reload stack pointer2	
+1010000000110000 - reload stack2		    
+1001000000100000 - reload memory		    
+1001000000100100 - reload read memory      
+1000100000101000 - reload tos1		        
+1000100000110000 - reload tos2		        
+1000000100100000 - reload command pointer	
+0100000011000000 - add 			        
+0010000011000000 - inc 			        
+0001000011000000 - and 			        
+0000100011000000 - or 			            
+0000010001101100 - less			        
+0000001011011000 - substract 			
+0000000111011000 - dec 			        			        
 ```
 
 **Микрокоманда строится по шаблону:**
@@ -158,7 +169,7 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 4. TOS
 5. ALU
 6. IO
-7. ~~deleted~~ 0
+7. 0
 8. flags
 9. for io: input; for other: snap
 10. for io: output; for other: reload
@@ -184,7 +195,7 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 5. less
 6. subtract
 7. decrement
-8. negative flag
+8. 0
 9. zero flag
 10. less flag
 11. 0
@@ -193,11 +204,11 @@ forth | stack | neum | **mc** ~~-> hw~~ | instr | **binary** ~~-> struct~~ | str
 14. 0
 15. 0
 
-0 | add | increment | and | or | less | substract | decrement | negative flag | zero flag | less flag | 0 | 0 | 0
+0 | add | increment | and | or | less | substract | decrement | 0 | zero flag | less flag | 0 | 0 | 0
 
 Пример: <br>
 01000000110000 - add <br>
-0 | add | 0 | 0 | 0 | 0 | 0 | 0 | negative flag | zero flag | 0 | 0 | 0 | 0 <br>
+0 | add | 0 | 0 | 0 | 0 | 0 | 0 | 0 | zero flag | 0 | 0 | 0 | 0 <br>
 читается как: add and touch n,z flags
 
 Каждая инструкция транслируется в набор микрокоманд с помощью [листинга микропрограмм](decoder_data/microcommands.txt).
@@ -256,8 +267,8 @@ args:
 
 ## Модель процессора
 Входные данные:
-- [описание трансляции](main_program_data/forth_to_mnem.txt)
-- [описание мнемоник](main_program_data/mnemonic_description.txt)
+- [описание трансляции](decoder_data/forth_to_mnem.txt)
+- [описание мнемоник](decoder_data/mnemonic_description.txt)
 - [программа](main_program_data/program.txt)
 - [файл с входными данными](main_program_data/input.txt)
 
@@ -276,7 +287,7 @@ args:
 - Сигнал ```operation_type``` определяет тип операции, требуемой от ALU
 - Сигнал ```jmp <type>``` определяет, до какой инструкции переходить
 - Сигнал ```check <flag>``` проверяет наличие установленного флага
-- Флаги: (negative, zero, less)
+- Флаги: (zero, less)
 - Наличие флага less означает, что на вершине стека находится меньшее значение, чем на второй позиции от вершины. 
 
 ![DataPath](https://sun9-64.userapi.com/impg/XtkyMjCEH2Iz1t9Y8N_ThYRqDuHzcmhVwnnEZg/xbUteTEfy9g.jpg?size=1175x1396&quality=96&sign=bd6d67a9199b65a96fa0a821c92a7eec&type=album)
