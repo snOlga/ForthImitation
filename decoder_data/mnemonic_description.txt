@@ -137,6 +137,6 @@ jump do
 
 save address
 
-check true
+check (not) true
 
-check false
+check (not) false

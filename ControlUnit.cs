@@ -21,10 +21,9 @@ public class ControlUnit
     private static int microCount = 0;
     private static int programSize = 0;
     private static int instructionCount = 0;
-    private static int programLength = 0;
     public string GetMetaData()
     {
-        return $"Microcommands count: {microCount} | Program size in bit: {programSize} | Instruction count: {instructionCount} | Program length: {programLength}";
+        return $"Microcommands count: {microCount} | Program size in bit: {programSize} | Instruction count: {instructionCount}";
     }
     #endregion
     private class Decoder
@@ -226,7 +225,6 @@ public class ControlUnit
             (string[] mnemonicProg, LoadTypes loadType) decodeResult = decoder.DecodeInstruction(currentInst);
 
             mnemProgResultString += "\n--- " + currentInst + "\n" + String.Join("\n", decodeResult.mnemonicProg);
-            programLength += decodeResult.mnemonicProg.Length;
 
             string[] microCode = Preprocessing(decodeResult);
 

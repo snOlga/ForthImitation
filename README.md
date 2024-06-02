@@ -246,7 +246,7 @@ variable     - 18
 !            - 9
 ?            - 13
 ```
-[Пример программы](program.txt)
+[Пример программы](main_program_data/program.txt)
 
 ## Транслятор
 Интерфейс командной строки: ```dotnet run .\program.txt .\input.txt .\output.txt .\forth_to_mnem.txt .\mnemonic_description.txt .\logging.log```
@@ -314,7 +314,7 @@ ControlUnit
 - [cat](/tests/golden/test_cat.txt)
 - [hello user](/tests/golden/test_hello_user.txt)
 - [fibonacci](/tests/golden/test_fibonacci_procedure.txt)
-- [hello world](/tests/golden/hello_world.txt)
+- [hello world](/tests/golden/test_hello_world.txt)
 
 **Fibonacci**
 
@@ -411,7 +411,7 @@ jump else
 ```
 
 Console output: ``` Tick count: 2517
-Microcommands count: 1801 | Program size in bit: 28816 | Instruction count: 161 | Program length: 646 ```
+Microcommands count: 1801 | Program size in bit: 28816 | Instruction count: 161 ```
 
 Output: ```188```.
 
@@ -419,13 +419,13 @@ Logging: [logging.log](main_program_data/logging.log)
 
 ## End
 ```
-| ФИО                       | prog         | line count | prog size      | microinstr count | instr count | tick count | variant
+| ФИО                       | prog         | line count | prog size | microinstr count | instr count | tick count | variant
 
-| Сафонова Ольга Данииловна | hello user   | 1510       | 70416 bit      | 4401             | 336         | 5496       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | hello user   | 1510       | 1486      | 4401             | 336         | 5496       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | cat          | 34387      | 1400528 bit    | 87533            | 9375        | 112547     | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | cat          | 34387      | 162      | 87533            | 9375        | 112547     | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | fibonacci    | 646        | 28816 bit      | 1801             | 161         | 2517       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | fibonacci    | 646        | 782      | 1801             | 161         | 2517       | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 
-| Сафонова Ольга Данииловна | hello world  | 124        | 6672 bit       | 417              | 29          | 516        | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
+| Сафонова Ольга Данииловна | hello world  | 124        | 144      | 417              | 29          | 516        | forth | stack | neum | mc | instr | binary | stream | port | pstr | prob2 |
 ```
